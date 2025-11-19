@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Lily Florist - Sign In</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            mauve: '#b47e7f',
+            'mauve-dark': '#8c6d6e',
+            'bg-pink': '#f2dede'
+          },
+          fontFamily: {
+            'serif-display': ["'Playfair Display'", 'serif'],
+            'poppins': ['Poppins', 'sans-serif']
+          },
+          borderRadius: {
+            'xl-l': '48px'
+          }
+        }
+      }
+    }
+  </script>
+</head>
+
+<body class="font-poppins bg-white antialiased">
+
+  <div class="min-h-screen flex">
+    <!-- LEFT: full-image with translucent tint -->
+    <div class="block w-1/2 relative min-h-screen flex items-center bg-[url('img/login.png')] bg-cover bg-left bg-no-repeat">
+      <!-- overlay tint (transparan) -->
+      <div class="absolute inset-0 bg-[rgba(242,222,222,0.55)]"></div>
+    </div>
+
+    <!-- RIGHT: white panel with large rounded left corners -->
+    <div class="w-1/2 flex items-center justify-center p-8 bg-white rounded-tl-xl-l rounded-bl-xl-l shadow-lg">
+      <div class="relative z-20 w-full max-w-md p-10 md:p-16">
+        <h1 class="font-serif-display text-4xl md:text-5xl text-mauve-dark leading-tight">Lily Florist</h1>
+        <h2 class="mt-2 text-2xl md:text-3xl font-semibold text-mauve">Sign In</h2>
+
+        <form class="mt-8 space-y-6" action="#" method="post" novalidate>
+          <div>
+            <label class="sr-only">Username</label>
+            <input
+              type="text"
+              name="username"
+              placeholder="Masukkan Username"
+              required
+              class="w-full bg-transparent border-0 border-b border-gray-200 focus:border-mauve focus:outline-none py-3 placeholder-gray-400"
+            />
+          </div>
+
+          <div>
+            <label class="sr-only">Password</label>
+            <input
+              type="password"
+              name="password"
+              placeholder="Masukkan Kata Sandi"
+              required
+              class="w-full bg-transparent border-0 border-b border-gray-200 focus:border-mauve focus:outline-none py-3 placeholder-gray-400"
+            />
+          </div>
+
+          <div class="pt-4">
+            <button type="submit" class="w-full py-3 rounded-md bg-mauve text-white font-medium hover:opacity-95 transition">Masuk</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

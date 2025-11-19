@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Pengeluaran - Lily Florist</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .soft-card { box-shadow: 0 6px 10px rgba(0,0,0,0.04), inset 0 1px 0 rgba(255,255,255,0.6); }
+
+    /* warna & panel sama dengan Pendapatan / dashboardadmin */
+    .sidebar-bg{ background: linear-gradient(180deg,#d9a4a7 0%, #d6a6a9 100%); }
+    .panel-bg{ background: #f6efeb; }
+
+    .btn-pink {
+      background-color: #e6b7b7;
+      color: #7b4f4f;
+      border: 1px solid #e0bfc0;
+    }
+    .btn-pink:hover { background-color: #e8c2c2; }
+  </style>
+</head>
+<body class="antialiased font-sans text-stone-700 bg-white overflow-hidden">
+
+  <div class="flex h-screen">
+    <!-- Sidebar (sama dengan dashboardadmin / Pendapatan) -->
+   <aside class="w-64 bg-[#d9a4a7] text-[#6b4042] flex-shrink-0">
+      <div class="px-6 py-8">
+        <div class="flex items-center justify-between">
+          <div class="text-2xl font-serif font-semibold">Lily Florist</div>
+          <button class="p-2">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+          </button>
+        </div>
+
+        <nav class="mt-8">
+          <a class="flex items-center gap-3 bg-[#eecfd0] px-3 py-2 rounded-md text-sm shadow-inner soft-card-sm" href="#">
+            <svg class="w-5 h-5 text-[#8a595b]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>
+            <span class="text-xs">Dashboard</span>
+          </a>
+
+          <div class="mt-6 text-sm">
+            <div class="text-xs uppercase tracking-wide mb-2">Katalog</div>
+            <a class="flex items-center gap-3 px-3 py-2 rounded-md hover:bg-[#efdcdd]" href="#">
+              <svg class="w-5 h-5 text-[#8a595b]" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-width="2" d="M3 7h18M3 12h18M3 17h18"/></svg>
+              <span>Manajemen Katalog</span>
+            </a>
+          </div>
+
+          <div class="mt-6 text-sm">
+            <div class="text-xs uppercase tracking-wide mb-2">Transaksi</div>
+            <a class="flex items-center gap-3 px-3 py-2 rounded-md hover:bg-[#efdcdd]" href="#">
+              <svg class="w-5 h-5 text-[#8a595b]" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+              <span>Pendapatan</span>
+            </a>
+            <a class="flex items-center gap-3 px-3 py-2 rounded-md hover:bg-[#efdcdd] mt-2" href="#">
+              <svg class="w-5 h-5 text-[#8a595b]" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-width="2" d="M12 20V4m8 8H4"/></svg>
+              <span>Pengeluaran</span>
+            </a>
+          </div>
+
+          <div class="mt-8">
+            <a class="flex items-center gap-3 px-3 py-2 text-sm rounded-md hover:bg-[#efdcdd]" href="#">
+              <svg class="w-5 h-5 text-[#8a595b]" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10" stroke-width="2"/><path d="M12 8v4l3 3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span>Logout</span>
+            </a>
+          </div>
+        </nav>
+      </div>
+    </aside>
+    <!-- Main -->
+    <div class="flex-1">
+      <!-- Topbar -->
+      <header class="h-16 bg-[#efe6dd] border-b border-gray-200 flex items-center px-8">
+        <div class="text-sm text-[#7b6b6b]">Selamat Datang, Administrator</div>
+      </header>
+
+      <!-- Content -->
+      <main class="p-8 overflow-auto">
+        <div class="max-w-4xl mx-auto">
+          <h1 class="text-2xl font-semibold text-[#3b2b2a] mb-6">Pengeluaran</h1>
+
+          <section class="panel-bg rounded-md p-6 soft-card">
+            <div class="flex items-center justify-between mb-4">
+              <div class="text-sm">
+                <div class="mb-1 font-medium">Transaksi Keluar</div>
+                <div class="flex items-center gap-3">
+                  <label class="text-xs">Show</label>
+                  <select class="px-2 py-1 border rounded text-sm">
+                    <option>5</option>
+                    <option>10</option>
+                    <option>25</option>
+                  </select>
+                  <span class="text-xs text-stone-500">entries</span>
+                </div>
+              </div>
+
+              <div>
+                <button id="addExpenseBtn" class="inline-flex items-center gap-2 px-3 py-1.5 btn-pink text-sm rounded-md">
+                  + Pengeluaran
+                </button>
+              </div>
+            </div>
+
+            <div class="overflow-auto bg-white rounded-md border border-[#efe1e1]">
+              <table class="min-w-full text-sm table-fixed">
+                <thead class="bg-[#f3e6e6] text-stone-700">
+                  <tr>
+                    <th class="w-12 px-4 py-3 text-left">No</th>
+                    <th class="w-28 px-4 py-3 text-left">Tanggal</th>
+                    <th class="w-32 px-4 py-3 text-left">Jumlah</th>
+                    <th class="px-4 py-3 text-left">Keterangan</th>
+                    <th class="w-28 px-4 py-3 text-left">Aksi</th>
+                  </tr>
+                </thead>
+                <tbody id="expenseBody" class="text-stone-600">
+                  <tr class="border-t border-[#f5e9e9]">
+                    <td class="px-4 py-3">1</td>
+                    <td class="px-4 py-3">20/10/1025</td>
+                    <td class="px-4 py-3">Rp.1.000.000,00</td>
+                    <td class="px-4 py-3">Membeli stok bunga yang habis</td>
+                    <td class="px-4 py-3">
+                      <div class="flex gap-2">
+                        <button class="px-2 py-1 text-xs bg-[#fff5f5] text-[#c86a6a] rounded border border-[#f0d7d7]">Edit</button>
+                        <button class="px-2 py-1 text-xs bg-[#fff5f5] text-[#c86a6a] rounded border border-[#f0d7d7]">Hapus</button>
+                      </div>
+                    </td>
+                  </tr>
+
+                  <tr id="emptyRow" class="border-t border-[#f5e9e9]">
+                    <td class="px-4 py-6 text-center text-sm text-[#a78a8a]" colspan="5">Belum ada data tambahan</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="mt-4 text-xs text-stone-500">Showing 1 to 10 entries</div>
+          </section>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Add Expense Modal -->
+  <div id="expenseModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/40 px-4">
+    <div class="bg-white w-full max-w-md rounded-xl shadow-lg overflow-hidden">
+      <div class="p-5">
+        <div class="flex items-start justify-between">
+          <h3 class="text-lg font-semibold">Tambah Pengeluaran</h3>
+          <button id="expenseModalClose" class="text-stone-500 hover:text-stone-800" aria-label="Close">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+          </button>
+        </div>
+
+        <form id="expenseForm" class="mt-4 space-y-3">
+          <div>
+            <label class="block text-sm text-stone-700">Tanggal</label>
+            <input id="expenseDate" type="date" class="w-full border border-[#e6d7d7] rounded px-3 py-2 text-sm" />
+          </div>
+
+          <div>
+            <label class="block text-sm text-stone-700">Jumlah</label>
+            <input id="expenseAmount" type="number" step="1000" class="w-full border border-[#e6d7d7] rounded px-3 py-2 text-sm" placeholder="1000000" />
+          </div>
+
+          <div>
+            <label class="block text-sm text-stone-700">Keterangan</label>
+            <textarea id="expenseNote" rows="4" class="w-full border border-[#e6d7d7] rounded px-3 py-2 text-sm"></textarea>
+          </div>
+
+          <div class="flex justify-end gap-2 pt-2">
+            <button type="button" id="expenseCancel" class="px-3 py-1.5 rounded text-sm bg-white border border-[#e0d6d6]">Kembali</button>
+            <button type="submit" class="px-3 py-1.5 rounded text-sm btn-pink">Tambah</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Success popup -->
+  <div id="expenseSuccess" class="fixed inset-0 z-60 hidden items-center justify-center bg-black/30 px-4">
+    <div class="bg-white w-72 rounded-lg shadow-lg p-6 text-center">
+      <div class="mx-auto w-12 h-12 rounded-full bg-green-100 flex items-center justify-center mb-3">
+        <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+      </div>
+      <div class="text-sm font-medium mb-3">Pengeluaran Berhasil dicatat</div>
+      <button id="expenseSuccessOk" class="mt-2 px-4 py-1.5 rounded btn-pink">Oke</button>
+    </div>
+  </div>
+
+  <script>
+    const addExpenseBtn = document.getElementById('addExpenseBtn');
+    const expenseModal = document.getElementById('expenseModal');
+    const expenseModalClose = document.getElementById('expenseModalClose');
+    const expenseCancel = document.getElementById('expenseCancel');
+    const expenseForm = document.getElementById('expenseForm');
+    const expenseDate = document.getElementById('expenseDate');
+    const expenseAmount = document.getElementById('expenseAmount');
+    const expenseNote = document.getElementById('expenseNote');
+    const expenseBody = document.getElementById('expenseBody');
+    const emptyRow = document.getElementById('emptyRow');
+
+    const expenseSuccess = document.getElementById('expenseSuccess');
+    const expenseSuccessOk = document.getElementById('expenseSuccessOk');
+
+    function openExpenseModal() {
+      expenseModal.classList.remove('hidden'); expenseModal.classList.add('flex');
+      expenseDate.value = new Date().toISOString().slice(0,10);
+      document.body.style.overflow = 'hidden';
+    }
+    function closeExpenseModal() {
+      expenseModal.classList.add('hidden'); expenseModal.classList.remove('flex');
+      expenseForm.reset();
+      document.body.style.overflow = '';
+    }
+
+    addExpenseBtn.addEventListener('click', openExpenseModal);
+    expenseModalClose.addEventListener('click', closeExpenseModal);
+    expenseCancel.addEventListener('click', closeExpenseModal);
+
+    function formatCurrency(num) {
+      return 'Rp.' + Number(num).toLocaleString('id-ID', {minimumFractionDigits:2, maximumFractionDigits:2});
+    }
+
+    expenseForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const date = expenseDate.value ? new Date(expenseDate.value).toLocaleDateString('en-GB') : '-';
+      const amt = expenseAmount.value ? formatCurrency(expenseAmount.value) : 'Rp.0,00';
+      const note = expenseNote.value ? expenseNote.value.trim() : '-';
+
+      // compute next index
+      const rows = [...expenseBody.querySelectorAll('tr')].filter(r => r.id !== 'emptyRow' && r.querySelector('td'));
+      const lastIndex = rows.length ? parseInt(rows[rows.length-1].querySelector('td').textContent.trim()) : 0;
+      const nextIndex = lastIndex + 1;
+
+      const tr = document.createElement('tr');
+      tr.className = 'border-t border-[#f5e9e9]';
+      tr.innerHTML = `
+        <td class="px-4 py-3">${nextIndex}</td>
+        <td class="px-4 py-3">${date}</td>
+        <td class="px-4 py-3">${amt}</td>
+        <td class="px-4 py-3">${note}</td>
+        <td class="px-4 py-3">
+          <div class="flex gap-2">
+            <button class="px-2 py-1 text-xs bg-[#fff5f5] text-[#c86a6a] rounded border border-[#f0d7d7]">Edit</button>
+            <button class="px-2 py-1 text-xs bg-[#fff5f5] text-[#c86a6a] rounded border border-[#f0d7d7]">Hapus</button>
+          </div>
+        </td>
+      `;
+      expenseBody.insertBefore(tr, emptyRow);
+      emptyRow.style.display = 'none';
+
+      closeExpenseModal();
+
+      expenseSuccess.classList.remove('hidden'); expenseSuccess.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    });
+
+    expenseSuccessOk.addEventListener('click', () => {
+      expenseSuccess.classList.add('hidden'); expenseSuccess.classList.remove('flex');
+      document.body.style.overflow = '';
+    });
+
+    // backdrop & escape handling
+    document.addEventListener('click', (e) => {
+      if (e.target === expenseModal) closeExpenseModal();
+      if (e.target === expenseSuccess) { expenseSuccess.classList.add('hidden'); expenseSuccess.classList.remove('flex'); document.body.style.overflow = ''; }
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        if (!expenseModal.classList.contains('hidden')) closeExpenseModal();
+        if (!expenseSuccess.classList.contains('hidden')) { expenseSuccess.classList.add('hidden'); expenseSuccess.classList.remove('flex'); document.body.style.overflow = ''; }
+      }
+    });
+  </script>
+</body>
+</html>
