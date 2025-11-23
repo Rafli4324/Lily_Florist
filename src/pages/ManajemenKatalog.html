@@ -8,152 +8,148 @@
   <script src="https://cdn.tailwindcss.com"></script>
 
   <style>
-    /* small tweak to mimic soft card */
-    .soft-card { box-shadow: 0 6px 10px rgba(0,0,0,0.04), inset 0 1px 0 rgba(255,255,255,0.6); }
+    /* Custom font mimics */
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@400;500;600&display=swap');
+    
+    body { font-family: 'Inter', sans-serif; }
+    .font-serif { font-family: 'Playfair Display', serif; }
+    
+    /* Tweaks untuk tampilan kartu */
+    .soft-card { 
+        background-color: #fcf9f8; 
+        border-radius: 4px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+    
+    /* Style khusus untuk tabel agar mirip gambar (Grid tegas) */
+    .table-grid {
+        border-collapse: collapse;
+        width: 100%;
+        border: 1px solid #78716c; /* Stone-500 */
+    }
+    .table-grid th, .table-grid td {
+        border: 1px solid #78716c; /* Stone-500 border untuk setiap sel */
+        padding: 8px 12px;
+    }
+    .table-grid th {
+        background-color: #fff;
+        font-weight: 500;
+        text-align: center;
+        font-size: 14px;
+        color: #1c1917;
+    }
+    .table-grid td {
+        background-color: #fcf9f8; 
+    }
   </style>
 </head>
 <body class="antialiased min-h-screen font-sans text-stone-700 bg-white">
 
   <div class="flex">
-    <!-- SIDEBAR -->
-    <aside class="w-64 bg-gradient-to-b from-[#d9a4a7] to-[#d6a6a9] text-[#6b4042] min-h-screen border-r border-black/5">
+    <aside class="w-64 bg-[#d9a4a7] text-[#6b4042] flex-shrink-0 min-h-screen">
       <div class="px-6 py-8">
-        <div class="flex items-center gap-3 mb-6">
-          <div class="w-10 h-10 rounded-md bg-white/30 flex items-center justify-center font-serif text-lg font-semibold text-[#5b3f3f]">LF</div>
-          <div>
-            <div class="text-lg font-semibold">Lily Florist</div>
-            <div class="text-sm text-[#7b6562]">Administrator</div>
-          </div>
+        <div class="flex items-center justify-between">
+          <div class="text-2xl font-serif font-semibold">Lily Florist</div>
+          <button class="p-2">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+          </button>
         </div>
 
-        <nav class="space-y-3 text-sm">
-          <a class="flex items-center gap-3 p-2 rounded-md bg-[#f1e6e5] soft-card" href="#">
-            <svg class="w-4 h-4 text-[#8a595b]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7h18M3 12h18M3 17h18"/></svg>
-            <span>Dashboard</span>
+        <nav class="mt-8">
+          <a class="flex items-center gap-3 px-3 py-2 rounded-md hover:bg-[#efdcdd]" href="#">
+            <svg class="w-5 h-5 text-[#8a595b]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>
+            <span class="text-xs">Dashboard</span>
           </a>
 
-          <div class="pt-3 border-t border-white/20"></div>
+          <div class="mt-6 text-sm">
+            <div class="text-xs uppercase tracking-wide mb-2">Katalog</div>
+            <a class="flex items-center gap-3 bg-[#eecfd0] px-3 py-2 rounded-md text-sm shadow-inner" href="#">
+              <svg class="w-5 h-5 text-[#8a595b]" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-width="2" d="M3 7h18M3 12h18M3 17h18"/></svg>
+              <span>Manajemen Katalog</span>
+            </a>
+          </div>
 
-          <div class="text-xs font-semibold uppercase tracking-wide px-2 text-[#7b6562]">Katalog</div>
-          <a class="flex items-center gap-3 p-2 rounded-md bg-white/0 hover:bg-white/10" href="#">
-            <svg class="w-4 h-4 text-[#8a595b]" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-width="2" d="M3 7h18M3 12h18M3 17h18"/></svg>
-            <span>Manajemen Katalog</span>
-          </a>
+          <div class="mt-6 text-sm">
+            <div class="text-xs uppercase tracking-wide mb-2">Transaksi</div>
+            <a class="flex items-center gap-3 px-3 py-2 rounded-md hover:bg-[#efdcdd]" href="#">
+              <svg class="w-5 h-5 text-[#8a595b]" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+              <span>Pendapatan</span>
+            </a>
+            <a class="flex items-center gap-3 px-3 py-2 rounded-md hover:bg-[#efdcdd] mt-2" href="#">
+              <svg class="w-5 h-5 text-[#8a595b]" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-width="2" d="M12 20V4m8 8H4"/></svg>
+              <span>Pengeluaran</span>
+            </a>
+          </div>
 
-          <div class="pt-3 border-t border-white/20"></div>
-
-          <div class="text-xs font-semibold uppercase tracking-wide px-2 text-[#7b6562]">Transaksi</div>
-          <a class="flex items-center gap-3 p-2 rounded-md hover:bg-white/10" href="#">
-            <svg class="w-4 h-4 text-[#8a595b]" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
-            <span>Pendapatan</span>
-          </a>
-          <a class="flex items-center gap-3 p-2 rounded-md hover:bg-white/10" href="#">
-            <svg class="w-4 h-4 text-[#8a595b]" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-width="2" d="M12 20V4m8 8H4"/></svg>
-            <span>Pengeluaran</span>
-          </a>
-
-          <div class="pt-6 border-t border-white/20"></div>
-
-          <a class="flex items-center gap-3 p-2 rounded-md hover:bg-white/10 mt-4" href="#">
-            <svg class="w-4 h-4 text-[#8a595b]" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7"/></svg>
-            <span>Logout</span>
-          </a>
+          <div class="mt-8">
+            <a class="flex items-center gap-3 px-3 py-2 text-sm rounded-md hover:bg-[#efdcdd]" href="#">
+              <svg class="w-5 h-5 text-[#8a595b]" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10" stroke-width="2"/><path d="M12 8v4l3 3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span>Logout</span>
+            </a>
+          </div>
         </nav>
       </div>
     </aside>
 
-    <!-- MAIN -->
     <div class="flex-1 min-h-screen flex flex-col">
-      <!-- TOPBAR -->
-      <header class="h-16 bg-[#efe6dd] border-b border-gray-200 flex items-center px-8">
-        <div class="text-sm text-[#7b6b6b]">Selamat Datang, Administrator</div>
+      <header class="h-16 bg-[#fcf9f8] border-b border-[#e7e5e4] flex items-center px-8">
+        <div class="text-base font-medium text-[#a8a29e]">Selamat Datang, Administrator</div>
       </header>
 
-      <!-- CONTENT -->
-      <main class="p-8">
-        <div class="max-w-4xl mx-auto">
-          <h1 class="text-2xl font-semibold text-[#3b2b2a] mb-6">Manajemen Katalog</h1>
+      <main class="p-8 bg-white">
+        <div class="max-w-5xl">
+          <h1 class="text-2xl font-bold text-[#44403c] mb-6">Manajemen Katalog</h1>
 
-          <section class="bg-[#f6efeb] rounded-md p-6 soft-card">
+          <section class="soft-card p-6 min-h-[400px]">
+            <h2 class="text-lg font-bold text-[#44403c] mb-4">Data Katalog</h2>
+            
             <div class="flex items-center justify-between mb-4">
-              <div>
-                <label class="block text-sm font-medium mb-2 text-stone-700">Data Katalog</label>
-
-                <!-- styled native select -->
-                <div class="relative inline-block">
-                  <select id="catalogSelect" class="appearance-none pr-8 pl-3 py-2 border border-[#e6d7d7] rounded-md bg-white text-sm text-stone-700 focus:outline-none focus:ring-1 focus:ring-[#d8bebe]">
-                    <option value="">Pilih Data</option>
-                    <option>Data Buket Bunga</option>
+              <div class="w-64">
+                <div class="relative">
+                  <select id="catalogSelect" class="w-full appearance-none pl-3 pr-8 py-2 border border-[#78716c] rounded bg-white text-sm text-stone-700 focus:outline-none shadow-sm">
+                    <option value="">Data Buket Bunga</option>
                     <option>Data Bunga Papan</option>
                     <option>Data Standing Flower</option>
-                    <option>Data Dekorasi Bunga</option>
-                    <option>Data Bunga Box</option>
-                    <option>Data Bunga Meja</option>
-                    <option>Data Bunga Mobil</option>
-                    <option>Data Bunga Duka</option>
                   </select>
                   <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
-                    <svg class="w-4 h-4 text-[#b99e9e]" viewBox="0 0 20 20" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 8l4 4 4-4"/></svg>
+                    <svg class="w-4 h-4 text-stone-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                   </div>
                 </div>
               </div>
 
-              <div>
-                <button id="addBtn" class="inline-flex items-center gap-2 px-3 py-1.5 bg-[#e6b7b7] text-[#7b4f4f] text-sm font-medium rounded-md border border-[#e0bfc0] hover:bg-[#e8c2c2]">
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
-                  Tambah Data
-                </button>
-              </div>
+              <button id="addBtn" class="bg-[#d9a4a7] hover:bg-[#cd9295] text-[#7b4f4f] px-4 py-2 rounded text-sm font-semibold flex items-center gap-2 shadow-sm transition-colors">
+                <span>+</span> Tambah Data
+              </button>
             </div>
 
-            <!-- table area -->
-            <div class="overflow-auto bg-white rounded-md border border-[#efe1e1]">
-              <table class="min-w-full divide-y divide-[#efe1e1] table-fixed">
+            <div class="overflow-x-auto">
+              <table class="table-grid">
                 <thead>
-                  <tr class="bg-[#f3e6e6] text-sm text-stone-700">
-                    <th class="w-12 px-4 py-3 text-left">No</th>
-                    <th class="w-28 px-4 py-3 text-left">Gambar</th>
-                    <th class="w-40 px-4 py-3 text-left">Kode Paket</th>
-                    <th class="w-24 px-4 py-3 text-left">Stok</th>
-                    <th class="px-4 py-3 text-left">Deskripsi</th>
-                    <th class="w-28 px-4 py-3 text-left">Aksi</th>
+                  <tr>
+                    <th class="w-12">No</th>
+                    <th class="w-32">Gambar</th>
+                    <th class="w-32">Kode Paket</th>
+                    <th class="w-24">Stok</th>
+                    <th>Deskripsi</th>
+                    <th class="w-24">Aksi</th>
                   </tr>
                 </thead>
-                <tbody id="catalogBody" class="text-sm text-stone-600">
-                  <tr class="border-t border-[#f5e9e9]">
-                    <td class="px-4 py-3">1</td>
-                    <td class="px-4 py-3">
-                      <div class="w-20 h-12 bg-gray-100 rounded overflow-hidden flex items-center justify-center text-xs text-gray-400">no image</div>
-                    </td>
-                    <td class="px-4 py-3">Buket0001</td>
-                    <td class="px-4 py-3">10</td>
-                    <td class="px-4 py-3">Buket bunga lili & mawar, bungkus kertas coklat.</td>
-                    <td class="px-4 py-3">
-                      <div class="flex gap-2">
-                        <button class="px-2 py-1 text-xs bg-[#fff5f5] text-[#c86a6a] rounded border border-[#f0d7d7]">Edit</button>
-                        <button class="px-2 py-1 text-xs bg-[#fff5f5] text-[#c86a6a] rounded border border-[#f0d7d7]">Hapus</button>
-                      </div>
-                    </td>
+                <tbody id="catalogBody" class="text-sm text-center text-stone-600">
+                  <tr class="h-24">
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                   </tr>
-
-                  <tr class="border-t border-[#f5e9e9]">
-                    <td class="px-4 py-3">2</td>
-                    <td class="px-4 py-3">
-                      <div class="w-20 h-12 bg-gray-100 rounded overflow-hidden flex items-center justify-center text-xs text-gray-400">no image</div>
-                    </td>
-                    <td class="px-4 py-3">Buket0002</td>
-                    <td class="px-4 py-3">5</td>
-                    <td class="px-4 py-3">Standing flower untuk acara.</td>
-                    <td class="px-4 py-3">
-                      <div class="flex gap-2">
-                        <button class="px-2 py-1 text-xs bg-[#fff5f5] text-[#c86a6a] rounded border border-[#f0d7d7]">Edit</button>
-                        <button class="px-2 py-1 text-xs bg-[#fff5f5] text-[#c86a6a] rounded border border-[#f0d7d7]">Hapus</button>
-                      </div>
-                    </td>
-                  </tr>
-
-                  <tr id="emptyRow" class="border-t border-[#f5e9e9]">
-                    <td class="px-4 py-6 text-center text-sm text-[#a78a8a]" colspan="6">Belum ada data ditampilkan</td>
+                  <tr class="h-24">
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                   </tr>
                 </tbody>
               </table>
@@ -164,13 +160,12 @@
     </div>
   </div>
 
-  <!-- Add Data Modal -->
   <div id="addModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/40 px-4">
     <div class="bg-white max-w-3xl w-full rounded-xl shadow-lg overflow-hidden">
       <div class="p-6">
         <div class="flex items-start justify-between">
           <h3 class="text-lg font-semibold text-stone-800">Tambah Katalog</h3>
-          <button id="addModalClose" class="text-stone-500 hover:text-stone-800" aria-label="Close modal">
+          <button id="addModalClose" class="text-stone-500 hover:text-stone-800">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
           </button>
         </div>
@@ -178,10 +173,10 @@
         <form id="addForm" class="mt-4 grid grid-cols-1 md:grid-cols-3 gap-4">
           <div class="md:col-span-2 space-y-3">
             <label class="text-sm text-stone-700">Kode Paket</label>
-            <input id="addKode" class="w-full border border-[#e6d7d7] rounded px-3 py-2 text-sm" required>
+            <input id="addKode" class="w-full border border-gray-300 rounded px-3 py-2 text-sm" required>
 
             <label class="text-sm text-stone-700">Deskripsi produk</label>
-            <textarea id="addDesc" rows="6" class="w-full border border-[#e6d7d7] rounded px-3 py-2 text-sm"></textarea>
+            <textarea id="addDesc" rows="6" class="w-full border border-gray-300 rounded px-3 py-2 text-sm"></textarea>
           </div>
 
           <div class="space-y-3">
@@ -190,17 +185,15 @@
             <div id="addImgPreview" class="w-full h-28 bg-gray-100 rounded flex items-center justify-center text-xs text-gray-400 overflow-hidden">Preview</div>
 
             <label class="text-sm text-stone-700">Stok</label>
-            <select id="addStok" class="w-full border border-[#e6d7d7] rounded px-3 py-2 text-sm">
+            <select id="addStok" class="w-full border border-gray-300 rounded px-3 py-2 text-sm">
               <option>1</option>
-              <option>2</option>
               <option>5</option>
               <option>10</option>
-              <option>50</option>
             </select>
 
             <div class="flex gap-2 justify-end pt-2">
-              <button type="button" id="addCancel" class="px-3 py-1.5 rounded text-sm bg-white border border-[#e0d6d6] text-stone-700">Kembali</button>
-              <button type="submit" class="px-3 py-1.5 rounded text-sm bg-[#e6b7b7] text-[#7b4f4f] border border-[#e0bfc0]">Simpan</button>
+              <button type="button" id="addCancel" class="px-3 py-1.5 rounded text-sm bg-white border border-gray-300 text-stone-700">Kembali</button>
+              <button type="submit" class="px-3 py-1.5 rounded text-sm bg-[#d9a4a7] text-[#7b4f4f]">Simpan</button>
             </div>
           </div>
         </form>
@@ -208,22 +201,8 @@
     </div>
   </div>
 
-  <!-- Success popup -->
-  <div id="successModal" class="fixed inset-0 z-60 hidden items-center justify-center bg-black/30 px-4">
-    <div class="bg-white w-80 rounded-lg shadow-lg p-6 text-center">
-      <div class="mx-auto w-12 h-12 rounded-full bg-green-100 flex items-center justify-center mb-3">
-        <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-      </div>
-      <div class="text-sm font-medium mb-3">Katalog Berhasil Ditambahkan</div>
-      <button id="successOk" class="mt-2 px-4 py-1.5 rounded bg-[#e6b7b7] text-[#7b4f4f]">Oke</button>
-    </div>
-  </div>
-
   <script>
-    const select = document.getElementById('catalogSelect');
-    const emptyRow = document.getElementById('emptyRow');
     const catalogBody = document.getElementById('catalogBody');
-
     const addBtn = document.getElementById('addBtn');
     const addModal = document.getElementById('addModal');
     const addModalClose = document.getElementById('addModalClose');
@@ -232,99 +211,72 @@
     const addImgInput = document.getElementById('addImgInput');
     const addImgPreview = document.getElementById('addImgPreview');
 
-    const successModal = document.getElementById('successModal');
-    const successOk = document.getElementById('successOk');
-
-    select.addEventListener('change', () => {
-      if (select.value === '') emptyRow.style.display = '';
-      else emptyRow.style.display = 'none';
-    });
-
-    function openAddModal() {
-      addModal.classList.remove('hidden');
-      addModal.classList.add('flex');
-      document.body.style.overflow = 'hidden';
-    }
-    function closeAddModal() {
-      addModal.classList.add('hidden');
-      addModal.classList.remove('flex');
-      document.body.style.overflow = '';
-      addForm.reset();
-      addImgPreview.innerHTML = 'Preview';
+    // Helper untuk modal
+    function toggleModal(show) {
+      if(show) {
+        addModal.classList.remove('hidden');
+        addModal.classList.add('flex');
+      } else {
+        addModal.classList.add('hidden');
+        addModal.classList.remove('flex');
+        addForm.reset();
+        addImgPreview.innerHTML = 'Preview';
+      }
     }
 
-    addBtn.addEventListener('click', openAddModal);
-    addModalClose.addEventListener('click', closeAddModal);
-    addCancel.addEventListener('click', closeAddModal);
+    addBtn.addEventListener('click', () => toggleModal(true));
+    addModalClose.addEventListener('click', () => toggleModal(false));
+    addCancel.addEventListener('click', () => toggleModal(false));
 
+    // Preview Image
     addImgInput.addEventListener('change', (e) => {
       const file = e.target.files && e.target.files[0];
-      if (!file) { addImgPreview.innerHTML = 'Preview'; return; }
+      if (!file) return;
       const url = URL.createObjectURL(file);
-      addImgPreview.innerHTML = '';
-      const img = document.createElement('img');
-      img.src = url;
-      img.className = 'w-full h-full object-cover';
-      addImgPreview.appendChild(img);
+      addImgPreview.innerHTML = `<img src="${url}" class="w-full h-full object-cover">`;
     });
 
+    // Handle Submit
     addForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      const kode = document.getElementById('addKode').value.trim() || '—';
-      const desc = document.getElementById('addDesc').value.trim() || '-';
+      
+      const kode = document.getElementById('addKode').value || '-';
+      const desc = document.getElementById('addDesc').value || '-';
       const stok = document.getElementById('addStok').value;
-      let imgHtml = '<div class="w-20 h-12 bg-gray-100 rounded overflow-hidden flex items-center justify-center text-xs text-gray-400">no image</div>';
-      const file = addImgInput.files && addImgInput.files[0];
+      
+      // Ambil gambar
+      let imgHtml = 'No Img';
+      const file = addImgInput.files[0];
       if (file) {
-        const url = URL.createObjectURL(file);
-        imgHtml = `<div class="w-20 h-12 rounded overflow-hidden"><img src="${url}" class="w-full h-full object-cover" /></div>`;
+        imgHtml = `<div class="w-16 h-10 mx-auto bg-gray-200 overflow-hidden"><img src="${URL.createObjectURL(file)}" class="w-full h-full object-cover"></div>`;
       }
 
-      // compute next index
-      const rows = [...catalogBody.querySelectorAll('tr')].filter(r => r.id !== 'emptyRow' && r.querySelector('td'));
-      let nextIndex = rows.length ? (parseInt(rows[rows.length-1].querySelector('td').textContent.trim()) + 1) : 1;
-
+      // Hapus baris kosong placeholder jika ini data pertama (Logic sederhana)
+      // Di kode ini kita insertBefore data baru di paling atas
+      
       const tr = document.createElement('tr');
-      tr.className = 'border-t border-[#f5e9e9]';
+      // Style row baru agar sesuai grid
+      tr.className = "h-16 hover:bg-stone-100";
+      
+      // Hitung nomor urut sederhana
+      const existingRows = catalogBody.querySelectorAll('tr:not(.h-24)'); // exclude placeholder
+      const no = existingRows.length + 1;
+
       tr.innerHTML = `
-        <td class="px-4 py-3">${nextIndex}</td>
-        <td class="px-4 py-3">${imgHtml}</td>
-        <td class="px-4 py-3">${kode}</td>
-        <td class="px-4 py-3">${stok}</td>
-        <td class="px-4 py-3">${desc}</td>
-        <td class="px-4 py-3">
-          <div class="flex gap-2">
-            <button class="px-2 py-1 text-xs bg-[#fff5f5] text-[#c86a6a] rounded border border-[#f0d7d7]">Edit</button>
-            <button class="px-2 py-1 text-xs bg-[#fff5f5] text-[#c86a6a] rounded border border-[#f0d7d7]">Hapus</button>
-          </div>
+        <td>${no}</td>
+        <td>${imgHtml}</td>
+        <td>${kode}</td>
+        <td>${stok}</td>
+        <td class="text-left px-4">${desc}</td>
+        <td>
+           <button class="text-xs bg-red-100 text-red-600 px-2 py-1 rounded border border-red-200">Hapus</button>
         </td>
       `;
-      catalogBody.insertBefore(tr, emptyRow);
-      emptyRow.style.display = 'none';
-      closeAddModal();
-
-      // show success
-      successModal.classList.remove('hidden');
-      successModal.classList.add('flex');
-      document.body.style.overflow = 'hidden';
-    });
-
-    successOk.addEventListener('click', () => {
-      successModal.classList.add('hidden');
-      successModal.classList.remove('flex');
-      document.body.style.overflow = '';
-    });
-
-    // backdrop and escape handling
-    document.addEventListener('click', (e) => {
-      if (e.target === addModal) closeAddModal();
-      if (e.target === successModal) { successModal.classList.add('hidden'); successModal.classList.remove('flex'); document.body.style.overflow = ''; }
-    });
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        if (!addModal.classList.contains('hidden')) closeAddModal();
-        if (!successModal.classList.contains('hidden')) { successModal.classList.add('hidden'); successModal.classList.remove('flex'); document.body.style.overflow = ''; }
-      }
+      
+      // Masukkan di paling atas sebelum placeholder
+      catalogBody.insertBefore(tr, catalogBody.firstChild);
+      
+      toggleModal(false);
     });
   </script>
 </body>

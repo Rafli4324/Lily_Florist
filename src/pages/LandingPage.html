@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lily Florist - Landing Page</title>
     
-    <!-- Mengganti link lokal dengan CDN Tailwind -->
     <script src="https://cdn.tailwindcss.com"></script>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -67,7 +66,6 @@
         }
     </style>
 
-    <!-- Konfigurasi Tailwind untuk menggunakan warna custom -->
     <script>
         tailwind.config = {
             theme: {
@@ -77,6 +75,8 @@
                         'hero-sub': 'var(--color-hero-sub)',
                         'accent-pink': 'var(--color-accent-pink)',
                         'off-white': '#FDF6F6',
+                        'card-bg': '#7b4f4f',
+                        'light-mauve': '#f2dede'
                     },
                     fontFamily: {
                         'serif-display': ["'Playfair Display'", 'serif'],
@@ -90,16 +90,12 @@
     </script>
 </head>
 
-<body class="font-poppins
-    bg-gradient-to-b
-    from-[#E0B8B8] from-15%
-    to-white to-90%">
+<body class="font-poppins bg-gradient-to-b from-[#E0B8B8] from-15% to-white to-90%">
 
     <header class="relative bg-gray-100 min-h-screen flex items-center justify-center overflow-hidden">
         <div class="absolute inset-0">
-            <!-- Ganti dengan URL placeholder jika gambar tidak ada. Saat ini menggunakan placeholder untuk memicu gambar di Canvas -->
             <img 
-                src="../src/img/landing1.png" 
+                src="../img/landing1.png" 
                 onerror="this.onerror=null;this.src='https://placehold.co/1200x800/8b5cf6/ffffff?text=Bouquet+Placeholder';"
                 alt="Bouquet of Flowers" 
                 class="w-screen h-screen object-cover object-left"
@@ -120,12 +116,12 @@
 
         <div class="relative z-10 max-w-7xl mx-5 px-7 w-full text-right">
             <div class="md:ml-auto md:w-3/5 lg:w-1/2 xl:w-2/5 pr-4 md:pr-0 mt-10 md:mt-0">
-                <!-- gunakan kelas hero-heading & hero-sub, hapus inline styles -->
-                <div class="hero-heading text-[4.8rem] md:text-[7.2rem] font-serif-display leading-tight mb-12 grid grid-cols-2 grid-rows-2 h-48 gap-4">
+                <div class="hero-heading text-[5.5rem] md:text-[9rem] font-serif-display leading-tight mb-12 grid grid-cols-2 grid-rows-2 gap-4">
                     <div class="col-start-1 row-start-1">Lily</div>
                     <div class="col-start-2 row-start-2 text-right">Florist</div>
                 </div>
-                <p class="hero-sub text-[1.25rem] md:text-2xl mb-6 leading-relaxed text-white">
+                
+                <p class="hero-sub text-[10rem] md:text-3xl mb-6 leading-relaxed text-white">
                     Wujudkan Keindahan dalam Setiap Rangkaian
                 </p>
                 <p class="text-white text-lg md:text-xl mb-8 leading-relaxed text-center">
@@ -138,33 +134,29 @@
         </div>
     </header>
 
-    <!-- START MODIFIKASI: Section Keunggulan (sekarang dengan latar belakang putih dan ikon lingkaran coklat) -->
     <section class="bg-white py-16 md:py-20">
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
           
-          <!-- Card 1: Kualitas Toko Bunga Tinggi -->
           <div class="flex flex-col items-center text-center">
-            <div class="w-18 h-18 rounded-full bg-[#a97070] flex items-center justify-center mb-4 overflow-hidden shadow-lg flex-shrink-0">
-              <img src="../src/img/flower (1) 1.png" alt="Kualitas" class="w-full h-full object-contain p-2" />
+            <div class="w-36 h-36 rounded-full bg-[#a97070] flex items-center justify-center mb-4 overflow-hidden shadow-lg flex-shrink-0">
+              <img src="../img/flower (1) 1.png" alt="Kualitas" class="w-full h-full object-contain p-0" />
             </div>
             <h3 class="text-lg font-semibold text-gray-800 mb-2">Kualitas Toko Bunga Tinggi</h3>
             <p class="text-sm text-gray-600">Menjamin produk bunga segar</p>
           </div>
 
-          <!-- Card 2: Toko Bunga Serba Ada -->
           <div class="flex flex-col items-center text-center">
-            <div class="w-18 h-18 rounded-full bg-[#a97070] flex items-center justify-center mb-4 overflow-hidden shadow-lg flex-shrink-0">
-              <img src="../src/img/brand 1.png" alt="Serba Ada" class="w-full h-full object-contain p-2" />
+            <div class="w-36 h-36 rounded-full bg-[#a97070] flex items-center justify-center mb-4 overflow-hidden shadow-lg flex-shrink-0">
+              <img src="../img/brand 1.png" alt="Serba Ada" class="w-1000 h-auto object-contain p-0" />
             </div>
             <h3 class="text-lg font-semibold text-gray-800 mb-2">Toko Bunga Serba Ada</h3>
             <p class="text-sm text-gray-600">Berbagai produk toko bunga</p>
           </div>
 
-          <!-- Card 3: Bunga Dapat Disesuaikan -->
           <div class="flex flex-col items-center text-center">
-            <div class="w-18 h-18 rounded-full bg-[#a97070] flex items-center justify-center mb-4 overflow-hidden shadow-lg flex-shrink-0">
-              <img src="../src/img/speech-bubble 1.png" alt="Disesuaikan" class="w-full h-full object-contain p-2" />
+            <div class="w-36 h-36 rounded-full bg-[#a97070] flex items-center justify-center mb-4 overflow-hidden shadow-lg flex-shrink-0">
+              <img src="../img/speech-bubble 1.png" alt="Disesuaikan" class="w-full h-full object-contain p-2" />
             </div>
             <h3 class="text-lg font-semibold text-gray-800 mb-2">Bunga Dapat Disesuaikan</h3>
             <p class="text-sm text-gray-600">Sebutkan kebutuhan spesifik</p>
@@ -173,91 +165,87 @@
         </div>
       </div>
     </section>
-    <!-- END MODIFIKASI: Section Keunggulan -->
-        <!-- Bagian Utama dengan Gambar dan Teks -->
-        <div class="max-w-7xl mx-auto px-6 mb-16">
-            <div class="flex flex-col md:flex-row items-center justify-between mt-20">
-                <div class="md:w-1/2 flex justify-center">
-                    <div class="w-[400px]  overflow-hidden ">
-                        <img 
-                            src="../src/img/Rectangle 2.png" 
-                            alt="Florist merangkai bunga" 
-                            class="w-full h-full "
-                        >
-                    </div>
-                </div>
-                <div class="md:w-1/2 md:pl-12">
-                    <h2 class="text-4xl md:text-5xl font-bold mb-5 font-serif-display text-primary-dark">
-                        Lily Florist
-                    </h2>
-                    <p class="text-gray-600 mb-6 text-lg leading-relaxed">
-                        Lily Florist adalah toko bunga di Depok yang menghadirkan berbagai pilihan bunga segar berkualitas untuk setiap momen spesial Anda. Mulai dari pernikahan, ulang tahun, ucapan selamat, hingga dekorasi acara, semua dirangkai dengan penuh cinta dan ketelitian.
-                    </p>
-                    <p class="text-gray-600 mb-6 italic text-lg font-serif-display">
-                        "Lily Florist - Fresh Flowers, Fresh Feelings."
-                    </p>
-                    <p class="text-gray-500">
-                        Jl. Akses UI, Kelapa Dua, Depok, Jawa Barat
-                    </p>
+
+    <div class="max-w-7xl mx-auto px-6 mb-16">
+        <div class="flex flex-col md:flex-row items-center justify-between mt-20">
+            <div class="md:w-1/2 flex justify-center">
+                <div class="w-[400px]  overflow-hidden ">
+                    <img 
+                        src="../img/Rectangle 2.png" 
+                        alt="Florist merangkai bunga" 
+                        class="w-full h-full "
+                    >
                 </div>
             </div>
+            <div class="md:w-1/2 md:pl-12">
+                <h2 class="text-4xl md:text-5xl font-bold mb-5 font-serif-display text-primary-dark">
+                    Lily Florist
+                </h2>
+                <p class="text-gray-600 mb-6 text-lg leading-relaxed">
+                    Lily Florist adalah toko bunga di Depok yang menghadirkan berbagai pilihan bunga segar berkualitas untuk setiap momen spesial Anda. Mulai dari pernikahan, ulang tahun, ucapan selamat, hingga dekorasi acara, semua dirangkai dengan penuh cinta dan ketelitian.
+                </p>
+                <p class="text-gray-600 mb-6 italic text-lg font-serif-display">
+                    "Lily Florist - Fresh Flowers, Fresh Feelings."
+                </p>
+                <p class="text-gray-500">
+                    Jl. Akses UI, Kelapa Dua, Depok, Jawa Barat
+                </p>
+            </div>
         </div>
+    </div>
 
-        <!-- Carousel Bunga (ganti bagian lama dengan ini) -->
-        <div class="max-w-7xl mx-auto px-6 py-12">
-            <h3 class="text-2xl font-serif-display text-center mb-12">Bunga Segar Kami</h3>
+    <div class="max-w-7xl mx-auto px-6 py-12">
+        <h3 class="text-2xl font-serif-display text-center mb-12">Bunga Segar Kami</h3>
 
-            <div class="relative px-16">
-                 <div class="flowerSwiper swiper">
-                     <div class="swiper-wrapper">
-                         <div class="swiper-slide flex flex-col items-center">
-                             <img src="./img/lily.png" alt="Bunga Lily" class="w-32 h-32 object-contain mb-2">
-                             <p class="text-sm">Bunga Lily</p>
-                         </div>
-                         <div class="swiper-slide flex flex-col items-center">
-                             <img src="./img/matahari.png" alt="Bunga Matahari" class="w-32 h-32 object-contain mb-2">
-                             <p class="text-sm">Bunga Matahari</p>
-                         </div>
-                         <div class="swiper-slide flex flex-col items-center">
-                             <img src="./img/trisan.png" alt="Bunga Trisan" class="w-32 h-32 object-contain mb-2">
-                             <p class="text-sm">Bunga Trisan</p>
-                         </div>
-                         <div class="swiper-slide flex flex-col items-center">
-                             <img src="./img/mawar.png" alt="Bunga Mawar" class="w-32 h-32 object-contain mb-2">
-                             <p class="text-sm">Bunga Mawar</p>
-                         </div>
-                         <div class="swiper-slide flex flex-col items-center">
-                             <img src="./img/garbera.png" alt="Bunga Gerbera" class="w-32 h-32 object-contain mb-2">
-                             <p class="text-sm">Bunga Gerbera</p>
-                         </div>
-                         <div class="swiper-slide flex flex-col items-center">
-                             <img src="./img/aster.png" alt="Bunga Aster" class="w-32 h-32 object-contain mb-2">
-                             <p class="text-sm">Bunga Aster</p>
-                         </div>
+        <div class="relative px-16">
+             <div class="flowerSwiper swiper">
+                 <div class="swiper-wrapper">
+                     <div class="swiper-slide flex flex-col items-center">
+                         <img src="../img/lily.png" alt="Bunga Lily" class="w-32 h-32 object-contain mb-2">
+                         <p class="text-sm">Bunga Lily</p>
                      </div>
-
-                     <!-- Navigation (styled circle buttons with chevrons) -->
-                     <button type="button"
-                            class="swiper-button-prev absolute left-3 md:left-4 top-1/2 -translate-y-1/2 z-40 flex h-10 w-10 items-center justify-center rounded-full bg-gray-200 text-gray-700 transition-colors hover:bg-gray-300 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-2"
-                            aria-label="Kembali">
-                       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-5 w-5">
-                         <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
-                       </svg>
-                       <span class="sr-only">Kembali</span>
-                     </button>
- 
-                     <button type="button"
-                            class="swiper-button-next absolute right-3 md:right-4 top-1/2 -translate-y-1/2 z-40 flex h-10 w-10 items-center justify-center rounded-full bg-gray-200 text-gray-700 transition-colors hover:bg-gray-300 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-2"
-                            aria-label="Lanjut">
-                       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-5 w-5">
-                         <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5 15.75 12 8.25 19.5" />
-                       </svg>
-                       <span class="sr-only">Lanjut</span>
-                     </button>
+                     <div class="swiper-slide flex flex-col items-center">
+                         <img src="../img/matahari.png" alt="Bunga Matahari" class="w-32 h-32 object-contain mb-2">
+                         <p class="text-sm">Bunga Matahari</p>
+                     </div>
+                     <div class="swiper-slide flex flex-col items-center">
+                         <img src="../img/trisan.png" alt="Bunga Trisan" class="w-32 h-32 object-contain mb-2">
+                         <p class="text-sm">Bunga Trisan</p>
+                     </div>
+                     <div class="swiper-slide flex flex-col items-center">
+                         <img src="../img/mawar.png" alt="Bunga Mawar" class="w-32 h-32 object-contain mb-2">
+                         <p class="text-sm">Bunga Mawar</p>
+                     </div>
+                     <div class="swiper-slide flex flex-col items-center">
+                         <img src="../img/garbera.png" alt="Bunga Gerbera" class="w-32 h-32 object-contain mb-2">
+                         <p class="text-sm">Bunga Gerbera</p>
+                     </div>
+                     <div class="swiper-slide flex flex-col items-center">
+                         <img src="../img/aster.png" alt="Bunga Aster" class="w-32 h-32 object-contain mb-2">
+                         <p class="text-sm">Bunga Aster</p>
+                     </div>
                  </div>
+
+                 <button type="button"
+                       class="swiper-button-prev absolute left-3 md:left-4 top-1/2 -translate-y-1/2 z-40 flex h-10 w-10 items-center justify-center rounded-full bg-gray-200 text-gray-700 transition-colors hover:bg-gray-300 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-2"
+                       aria-label="Kembali">
+                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-5 w-5">
+                     <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+                   </svg>
+                   <span class="sr-only">Kembali</span>
+                 </button>
+
+                 <button type="button"
+                       class="swiper-button-next absolute right-3 md:right-4 top-1/2 -translate-y-1/2 z-40 flex h-10 w-10 items-center justify-center rounded-full bg-gray-200 text-gray-700 transition-colors hover:bg-gray-300 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-2"
+                       aria-label="Lanjut">
+                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-5 w-5">
+                     <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5 15.75 12 8.25 19.5" />
+                   </svg>
+                   <span class="sr-only">Lanjut</span>
+                 </button>
              </div>
          </div>
-    </section>
+     </div>
 
     <section class="bg-off-white py-20">
       <div class="max-w-7xl mx-auto px-6">
@@ -265,181 +253,151 @@
           Pilih Rangkaian Bunga Anda
         </h2>
 
-        <!-- Row 1 : panel terpisah -->
-        <div class="bg-[#7b4f4f] rounded-2xl p-6 mb-8 transition-all">
+        <div class="bg-card-bg rounded-2xl p-8 mb-8 shadow-xl">
           <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-            <!-- Card (ulang untuk tiap item) -->
-            <div class="rounded-xl overflow-hidden">
-              <div class="bg-white/5 rounded-lg p-4">
-                <div class="h-64 w-full rounded-lg overflow-hidden bg-transparent">
-                  <img src="../src/img/bunga1.png"
-                       onerror="this.onerror=null;this.src='https://placehold.co/600x800/7b4f4f/fff?text=Bouquet+1';"
-                       alt="Buket Bunga"
-                       class="w-full h-full object-cover">
-                </div>
-                <span class="inline-block mt-3 bg-primary-dark text-white text-xs font-semibold px-3 py-1 rounded-full">Buket Bunga</span>
- 
-                <div class="mt-4 flex justify-center">
-                  <a href="#" class="inline-block">
-                    <button class="bg-white/90 text-primary-dark text-sm font-medium py-2 px-4 rounded-full shadow-sm hover:bg-white transition">
-                      Selengkapnya
+
+            <div class="group relative h-[350px] rounded-xl overflow-hidden shadow-lg bg-gray-200">
+                <img src="../img/buketbunga.png"
+                     onerror="this.onerror=null;this.src='https://placehold.co/600x800/7b4f4f/fff?text=Bouquet+1';"
+                     alt="Buket Bunga"
+                     class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                
+                <span class="absolute top-3 right-3 bg-black/50 backdrop-blur-sm text-white text-xs font-semibold px-3 py-1 rounded-full">
+                    Buket Bunga
+                </span>
+
+                <div class="absolute bottom-5 left-0 right-0 flex justify-center">
+                    <button class="bg-black/40 backdrop-blur-md border border-white/30 text-white text-sm font-medium py-2 px-6 rounded-full shadow-lg hover:bg-white hover:text-primary-dark transition-all duration-300">
+                        Selengkapnya
                     </button>
-                  </a>
                 </div>
-              </div>
             </div>
- 
-            <div class="rounded-xl overflow-hidden">
-              <div class="bg-white/5 rounded-lg p-4">
-                <div class="h-64 w-full rounded-lg overflow-hidden bg-transparent">
-                  <img src="../src/img/bunga2.png"
-                       onerror="this.onerror=null;this.src='https://placehold.co/600x800/7b4f4f/fff?text=Bunga+Papan';"
-                       alt="Bunga Papan"
-                       class="w-full h-full object-cover">
-                </div>
-                <span class="inline-block mt-3 bg-primary-dark text-white text-xs font-semibold px-3 py-1 rounded-full">Bunga Papan</span>
- 
-                <div class="mt-4 flex justify-center">
-                  <a href="#" class="inline-block">
-                    <button class="bg-white/90 text-primary-dark text-sm font-medium py-2 px-4 rounded-full shadow-sm hover:bg-white transition">
-                      Selengkapnya
+
+            <div class="group relative h-[350px] rounded-xl overflow-hidden shadow-lg bg-gray-200">
+                <img src="../img/bungapapan.png"
+                     onerror="this.onerror=null;this.src='https://placehold.co/600x800/7b4f4f/fff?text=Bunga+Papan';"
+                     alt="Bunga Papan"
+                     class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                
+                <span class="absolute top-3 right-3 bg-black/50 backdrop-blur-sm text-white text-xs font-semibold px-3 py-1 rounded-full">
+                    Bunga Papan
+                </span>
+
+                <div class="absolute bottom-5 left-0 right-0 flex justify-center">
+                    <button class="bg-black/40 backdrop-blur-md border border-white/30 text-white text-sm font-medium py-2 px-6 rounded-full shadow-lg hover:bg-white hover:text-primary-dark transition-all duration-300">
+                        Selengkapnya
                     </button>
-                  </a>
                 </div>
-              </div>
             </div>
- 
-            <div class="rounded-xl overflow-hidden">
-              <div class="bg-white/5 rounded-lg p-4">
-                <div class="h-64 w-full rounded-lg overflow-hidden bg-transparent">
-                  <img src="../src/img/bunga3.png"
-                       onerror="this.onerror=null;this.src='https://placehold.co/600x800/7b4f4f/fff?text=Standing+Flower';"
-                       alt="Standing Flower"
-                       class="w-full h-full object-cover">
-                </div>
-                <span class="inline-block mt-3 bg-primary-dark text-white text-xs font-semibold px-3 py-1 rounded-full">Standing Flower</span>
- 
-                <div class="mt-4 flex justify-center">
-                  <a href="#" class="inline-block">
-                    <button class="bg-white/90 text-primary-dark text-sm font-medium py-2 px-4 rounded-full shadow-sm hover:bg-white transition">
-                      Selengkapnya
+
+            <div class="group relative h-[350px] rounded-xl overflow-hidden shadow-lg bg-gray-200">
+                <img src="../img/standing.png"
+                     onerror="this.onerror=null;this.src='https://placehold.co/600x800/7b4f4f/fff?text=Standing+Flower';"
+                     alt="Standing Flower"
+                     class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                
+                <span class="absolute top-3 right-3 bg-black/50 backdrop-blur-sm text-white text-xs font-semibold px-3 py-1 rounded-full">
+                    Standing Flower
+                </span>
+
+                <div class="absolute bottom-5 left-0 right-0 flex justify-center">
+                    <button class="bg-black/40 backdrop-blur-md border border-white/30 text-white text-sm font-medium py-2 px-6 rounded-full shadow-lg hover:bg-white hover:text-primary-dark transition-all duration-300">
+                        Selengkapnya
                     </button>
-                  </a>
                 </div>
-              </div>
             </div>
- 
-            <div class="rounded-xl overflow-hidden">
-              <div class="bg-white/5 rounded-lg p-4">
-                <div class="h-64 w-full rounded-lg overflow-hidden bg-transparent">
-                  <img src="../src/img/bunga4.png"
-                       onerror="this.onerror=null;this.src='https://placehold.co/600x800/7b4f4f/fff?text=Dekorasi+Bunga';"
-                       alt="Dekorasi Bunga"
-                       class="w-full h-full object-cover">
-                </div>
-                <span class="inline-block mt-3 bg-primary-dark text-white text-xs font-semibold px-3 py-1 rounded-full">Dekorasi Bunga</span>
- 
-                <div class="mt-4 flex justify-center">
-                  <a href="#" class="inline-block">
-                    <button class="bg-white/90 text-primary-dark text-sm font-medium py-2 px-4 rounded-full shadow-sm hover:bg-white transition">
-                      Selengkapnya
+
+            <div class="group relative h-[350px] rounded-xl overflow-hidden shadow-lg bg-gray-200">
+                <img src="../img/dekorasi.png"
+                     onerror="this.onerror=null;this.src='https://placehold.co/600x800/7b4f4f/fff?text=Dekorasi+Bunga';"
+                     alt="Dekorasi Bunga"
+                     class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                
+                <span class="absolute top-3 right-3 bg-black/50 backdrop-blur-sm text-white text-xs font-semibold px-3 py-1 rounded-full">
+                    Dekorasi Bunga
+                </span>
+
+                <div class="absolute bottom-5 left-0 right-0 flex justify-center">
+                    <button class="bg-black/40 backdrop-blur-md border border-white/30 text-white text-sm font-medium py-2 px-6 rounded-full shadow-lg hover:bg-white hover:text-primary-dark transition-all duration-300">
+                        Selengkapnya
                     </button>
-                  </a>
                 </div>
-              </div>
             </div>
-          </div>
-        </div>
- 
-        <!-- Row 2 : panel terpisah -->
-        <div class="bg-[#7b4f4f] rounded-2xl p-6 mb-8 transition-all">
-          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-            <div class="rounded-xl overflow-hidden">
-              <div class="bg-white/5 rounded-lg p-4">
-                <div class="h-64 w-full rounded-lg overflow-hidden bg-transparent">
-                  <img src="../src/img/bunga5.png"
-                       onerror="this.onerror=null;this.src='https://placehold.co/600x800/7b4f4f/fff?text=Box+Flower';"
-                       alt="Bunga Box"
-                       class="w-full h-full object-cover">
-                </div>
-                <span class="inline-block mt-3 bg-primary-dark text-white text-xs font-semibold px-3 py-1 rounded-full">Bunga Box</span>
- 
-                <div class="mt-4 flex justify-center">
-                  <a href="#" class="inline-block">
-                    <button class="bg-white/90 text-primary-dark text-sm font-medium py-2 px-4 rounded-full shadow-sm hover:bg-white transition">
-                      Selengkapnya
+
+            <div class="group relative h-[350px] rounded-xl overflow-hidden shadow-lg bg-gray-200">
+                <img src="../img/bungabox.png"
+                     onerror="this.onerror=null;this.src='https://placehold.co/600x800/7b4f4f/fff?text=Box+Flower';"
+                     alt="Bunga Box"
+                     class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                
+                <span class="absolute top-3 right-3 bg-black/50 backdrop-blur-sm text-white text-xs font-semibold px-3 py-1 rounded-full">
+                    Bunga Box
+                </span>
+
+                <div class="absolute bottom-5 left-0 right-0 flex justify-center">
+                    <button class="bg-black/40 backdrop-blur-md border border-white/30 text-white text-sm font-medium py-2 px-6 rounded-full shadow-lg hover:bg-white hover:text-primary-dark transition-all duration-300">
+                        Selengkapnya
                     </button>
-                  </a>
                 </div>
-              </div>
             </div>
- 
-            <div class="rounded-xl overflow-hidden">
-              <div class="bg-white/5 rounded-lg p-4">
-                <div class="h-64 w-full rounded-lg overflow-hidden bg-transparent">
-                  <img src="../src/img/bunga6.png"
-                       onerror="this.onerror=null;this.src='https://placehold.co/600x800/7b4f4f/fff?text=Bunga+Meja';"
-                       alt="Bunga Meja"
-                       class="w-full h-full object-cover">
-                </div>
-                <span class="inline-block mt-3 bg-primary-dark text-white text-xs font-semibold px-3 py-1 rounded-full">Bunga Meja</span>
- 
-                <div class="mt-4 flex justify-center">
-                  <a href="#" class="inline-block">
-                    <button class="bg-white/90 text-primary-dark text-sm font-medium py-2 px-4 rounded-full shadow-sm hover:bg-white transition">
-                      Selengkapnya
+
+            <div class="group relative h-[350px] rounded-xl overflow-hidden shadow-lg bg-gray-200">
+                <img src="../img/bungameja.png"
+                     onerror="this.onerror=null;this.src='https://placehold.co/600x800/7b4f4f/fff?text=Bunga+Meja';"
+                     alt="Bunga Meja"
+                     class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                
+                <span class="absolute top-3 right-3 bg-black/50 backdrop-blur-sm text-white text-xs font-semibold px-3 py-1 rounded-full">
+                    Bunga Meja
+                </span>
+
+                <div class="absolute bottom-5 left-0 right-0 flex justify-center">
+                    <button class="bg-black/40 backdrop-blur-md border border-white/30 text-white text-sm font-medium py-2 px-6 rounded-full shadow-lg hover:bg-white hover:text-primary-dark transition-all duration-300">
+                        Selengkapnya
                     </button>
-                  </a>
                 </div>
-              </div>
             </div>
- 
-            <div class="rounded-xl overflow-hidden">
-              <div class="bg-white/5 rounded-lg p-4">
-                <div class="h-64 w-full rounded-lg overflow-hidden bg-transparent">
-                  <img src="../src/img/bunga7.png"
-                       onerror="this.onerror=null;this.src='https://placehold.co/600x800/7b4f4f/fff?text=Bunga+Mobil';"
-                       alt="Bunga Mobil"
-                       class="w-full h-full object-cover">
-                </div>
-                <span class="inline-block mt-3 bg-primary-dark text-white text-xs font-semibold px-3 py-1 rounded-full">Bunga Mobil</span>
- 
-                <div class="mt-4 flex justify-center">
-                  <a href="#" class="inline-block">
-                    <button class="bg-white/90 text-primary-dark text-sm font-medium py-2 px-4 rounded-full shadow-sm hover:bg-white transition">
-                      Selengkapnya
+
+            <div class="group relative h-[350px] rounded-xl overflow-hidden shadow-lg bg-gray-200">
+                <img src="../img/bungamobil.png"
+                     onerror="this.onerror=null;this.src='https://placehold.co/600x800/7b4f4f/fff?text=Bunga+Mobil';"
+                     alt="Bunga Mobil"
+                     class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                
+                <span class="absolute top-3 right-3 bg-black/50 backdrop-blur-sm text-white text-xs font-semibold px-3 py-1 rounded-full">
+                    Bunga Mobil
+                </span>
+
+                <div class="absolute bottom-5 left-0 right-0 flex justify-center">
+                    <button class="bg-black/40 backdrop-blur-md border border-white/30 text-white text-sm font-medium py-2 px-6 rounded-full shadow-lg hover:bg-white hover:text-primary-dark transition-all duration-300">
+                        Selengkapnya
                     </button>
-                  </a>
                 </div>
-              </div>
             </div>
- 
-            <div class="rounded-xl overflow-hidden">
-              <div class="bg-white/5 rounded-lg p-4">
-                <div class="h-64 w-full rounded-lg overflow-hidden bg-transparent">
-                  <img src="../src/img/bunga8.png"
-                       onerror="this.onerror=null;this.src='https://placehold.co/600x800/7b4f4f/fff?text=Karangan+Duka';"
-                       alt="Karangan Duka"
-                       class="w-full h-full object-cover">
-                </div>
-                <span class="inline-block mt-3 bg-primary-dark text-white text-xs font-semibold px-3 py-1 rounded-full">Karangan Duka</span>
- 
-                <div class="mt-4 flex justify-center">
-                  <a href="#" class="inline-block">
-                    <button class="bg-white/90 text-primary-dark text-sm font-medium py-2 px-4 rounded-full shadow-sm hover:bg-white transition">
-                      Selengkapnya
+
+            <div class="group relative h-[350px] rounded-xl overflow-hidden shadow-lg bg-gray-200">
+                <img src="../img/bungaduka.png"
+                     onerror="this.onerror=null;this.src='https://placehold.co/600x800/7b4f4f/fff?text=Karangan+Duka';"
+                     alt="Karangan Duka"
+                     class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                
+                <span class="absolute top-3 right-3 bg-black/50 backdrop-blur-sm text-white text-xs font-semibold px-3 py-1 rounded-full">
+                    Karangan Duka
+                </span>
+
+                <div class="absolute bottom-5 left-0 right-0 flex justify-center">
+                    <button class="bg-black/40 backdrop-blur-md border border-white/30 text-white text-sm font-medium py-2 px-6 rounded-full shadow-lg hover:bg-white hover:text-primary-dark transition-all duration-300">
+                        Selengkapnya
                     </button>
-                  </a>
                 </div>
-              </div>
             </div>
+
           </div>
         </div>
 
       </div>
     </section>
 
-    <!-- START MODIFIKASI: Section Kontak Kami (mengubah warna kotak kontak) -->
     <section class="bg-white py-20 md:py-24">
         <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
             
@@ -456,7 +414,6 @@
                 ></iframe>
             </div>
 
-            <!-- Mengubah background kotak kontak menjadi light-mauve -->
             <div class="bg-light-mauve p-8 md:p-12 rounded-lg shadow-lg">
                 <h2 class="text-4xl font-bold mb-6 font-serif-display text-primary-dark">
                     Kontak Kami
@@ -485,7 +442,6 @@
 
         </div>
     </section>
-    <!-- END MODIFIKASI: Section Kontak Kami -->
 
     <footer class="bg-gray-800 text-gray-400 py-10">
         <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-center md:text-left">
@@ -494,7 +450,7 @@
                 <p class="italic font-serif-display">Wujudkan Keindahan dalam Setiap Rangkaian</p>
             </div>
             <div class="mt-6 md:mt-0">
-                <p class="text-sm">&copy; 2025 Lily Florist. All Rights Reserved.</p>
+                <p class="text-sm">© 2025 Lily Florist. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
@@ -531,5 +487,3 @@
 
 </body>
 </html>
-
-
