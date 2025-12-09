@@ -11,6 +11,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
   <script>
     tailwind.config = {
       theme: {
@@ -26,6 +28,62 @@
         }
       }
     }
+
+    const supabaseUrl = 'https://uorxpavndirbgapqzugn.supabase.co';
+    const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVvcnhwYXZuZGlyYmdhcHF6dWduIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjQwNDAxOTQsImV4cCI6MjA3OTYxNjE5NH0.ebEFOmTgUFwOefA9FvVAxmm9jcTDVLDi5OLx_3_wh8k';
+    const supabase = window.supabase.createClient(supabaseUrl, supabaseAnonKey);
+
+    async function handleLogin(event) {
+      event.preventDefault();
+
+      const email = document.querySelector('input[name="email"]').value;
+      const password = document.querySelector('input[name="password"]').value;
+
+      try {
+        const { data, error } = await supabase.auth.signInWithPassword({
+          email: email,
+          password: password,
+        });
+
+        if (error) {
+          alert('Login gagal: ' + error.message);
+        } else {
+          alert('Login berhasil! Selamat datang.');
+          window.location.href = 'dashboardadmin.php';
+        }
+      } catch (err) {
+        console.error('Error:', err);
+        alert('Terjadi kesalahan. Coba lagi.');
+      }
+    }
+
+    async function handleSignUp(event) {
+      event.preventDefault();
+      const email = document.querySelector('input[name="email"]').value;
+      const password = document.querySelector('input[name="password"]').value;
+
+      try {
+        const { data, error } = await supabase.auth.signUp({
+          email: email,
+          password: password,
+        });
+
+        if (error) {
+          alert('Sign-up gagal: ' + error.message);
+        } else {
+          alert('Sign-up berhasil! Periksa email Anda untuk konfirmasi.');
+        }
+      } catch (err) {
+        console.error('Error:', err);
+        alert('Terjadi kesalahan. Coba lagi.');
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.querySelector('form');
+      form.addEventListener('submit', handleLogin);
+
+    });
   </script>
 </head>
 
@@ -47,10 +105,10 @@
           <form action="#" method="post" class="space-y-8">
               
               <div class="group">
-                  <label class="block text-xs text-gray-400 mb-1">Masukkan Username</label>
+                  <label class="block text-xs text-gray-400 mb-1">Masukkan Email</label>
                   <input
-                      type="text"
-                      name="username"
+                      type="email"
+                      name="email"
                       class="w-full border-b border-gray-200 py-2 text-gray-700 focus:border-mauve focus:outline-none transition-colors bg-transparent placeholder-transparent"
                       required
                   />

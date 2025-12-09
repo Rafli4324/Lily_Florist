@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Lily Florist - Katalog</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/@supabase/supabase-js@2" defer></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&family=Dancing+Script:wght@700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'mauve-100': '#F3E9E9',
+                        'mauve-200': '#E7CECD',
+                        'mauve-300': '#DBCBCC',
+                        'mauve-500': '#8C6D73',
+                        'accent-pink': '#d38b93'
+                    },
+                    fontFamily: {
+                        'serif-display': ['Cormorant Garamond', 'serif'],
+                        'script': ['Dancing Script', 'cursive'],
+                        'inter': ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        .hero-top {
+            background: linear-gradient(180deg, rgba(219,203,204,1) 0%, rgba(249,244,244,1) 45%);
+        }
+        .card-bg {
+            background: #DBCBCC;
+        }
+        .btn-mauve {
+            background:#8C6D73;
+        }
+        .page-wrap { max-width:1180px; margin-left:auto; margin-right:auto; padding-left:24px; padding-right:24px; }
+    </style>
+</head>
+<body class="font-inter bg-white text-stone-800">
+
+    <nav class="absolute top-0 left-0 right-0 z-30">
+      <div class="page-wrap py-6 flex items-center justify-between">
+        <a href="index.html" class="flex items-center">
+        </a>
+
+        <div class="hidden md:flex items-center gap-8 text-stone-800 text-sm">
+          <a href="LandingPage.php#beranda" class="font-semibold hover:text-accent-pink transition-colors">Beranda</a>
+          <a href="LandingPage.php#tentang-kami" class="font-semibold hover:text-accent-pink transition-colors">Tentang Kami</a>
+          <a href="LandingPage.php#katalog" class="font-semibold hover:text-accent-pink transition-colors">Katalog</a>
+          <a href="LandingPage.php#kontak" class="font-semibold hover:text-accent-pink transition-colors">Kontak</a>
+        </div>
+
+        <button class="md:hidden p-2" aria-label="menu">
+          <svg class="w-6 h-6 text-stone-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+    </nav>
+
+    <header class="hero-top min-h-[52vh] flex items-center relative overflow-hidden bg-gradient-to-b
+    from-[#E0B8B8] from-15%
+    via-rose-100 via-50%
+    to-white to-85%">
+        <div class="page-wrap grid grid-cols-1 md:grid-cols-2 gap-8 items-center pt-24 pb-12">
+
+            <div class="pt-6 md:pt-0">
+                <h1 class="font-serif-display text-6xl md:text-7xl text-stone-900 font-bold leading-tight">Kategori</h1>
+                <p class="font-serif-display text-xl text-mauve-500 mt-1">Bunga Papan</p>
+
+                <img src="../img/bungapapan.png" alt="Bunga Papan" class="mt-6 rounded-md shadow-lg w-56 md:w-64">
+            </div>
+
+            <div class="text-center md:text-left">
+                <h2 class="font-script text-3xl md:text-4xl text-[#8C6D73]">Wujudkan Keindahan dalam Setiap Rangkaian</h2>
+                <p class="mt-4 text-stone-600 max-w-lg mx-auto md:mx-0">
+                    Jadikan setiap momen lebih berkesan dengan rangkaian bunga dari toko Lily Florist
+                </p>
+
+                <a href="#" class="inline-block mt-6 px-6 py-2 rounded-full text-white btn-mauve shadow-md hover:opacity-95 transition-colors">Belanja Sekarang</a>
+            </div>
+
+        </div>
+    </header>
+
+    <main class="bg-white py-12">
+        <div class="page-wrap">
+            <section id="catalogGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                
+            </section>
+        </div>
+    </main>
+
+    <div id="productModal" class="fixed inset-0 z-50 hidden bg-black/40 px-4">
+      <div class="bg-white max-w-md w-full rounded-xl shadow-lg overflow-hidden relative top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+        
+        <button id="modalClose" class="absolute top-3 right-3 text-stone-500 hover:text-stone-800">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+
+        <div class="p-5">
+          <div class="flex gap-4">
+            <div class="w-28 h-28 flex-shrink-0 overflow-hidden rounded-md bg-gray-100">
+              <img id="modalImg" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTUwIiBoZWlnaHQ9IjE1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjRjBFOEU4Ii8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtc2l6ZT0iMTIiIGZpbGw9IiM4QzZENTczIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iMC4zZW0iPkJ1a2V0PC90ZXh0Pjwvc3ZnPg==" alt="produk" class="w-full h-full object-cover">
+            </div>
+
+            <div class="flex-1">
+              <h3 id="modalTitle" class="text-lg font-semibold text-stone-800">Detail Katalog</h3>
+              <div class="text-xs text-mauve-500 mt-1" id="modalCode">Buket0001</div>
+
+              <p id="modalDesc" class="mt-3 text-sm text-stone-600">
+                Bunga ini terdiri dari 4 tangkai bunga lili, satu bulan mawar, dan dibungkus dengan kertas bewarna coklat.
+              </p>
+
+              <div class="mt-4 text-sm">
+                <span class="font-medium">Stok: </span><span id="modalStock" class="text-mauve-500">Tersedia</span>
+              </div>
+
+              <div class="mt-6">
+                <button id="orderBtn" class="w-32 mx-auto md:mx-0 block bg-[#8C6D73] text-white py-2 rounded-full hover:opacity-95">Pesan</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="bg-stone-900 text-white py-8">
+        <div class="page-wrap flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="text-center md:text-left">
+                <h3 class="text-xl font-serif-display">Lily Florist</h3>
+                <p class="text-sm text-stone-300 mt-1">Wujudkan Keindahan dalam Setiap Rangkaian</p>
+            </div>
+            <div class="text-sm text-stone-300">Â© 2025 Lily Florist, All rights reserved</div>
+        </div>
+    </footer>
+
+    <script>
+        const supabaseUrl = 'https://uorxpavndirbgapqzugn.supabase.co/';
+        const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVvcnhwYXZuZGlyYmdhcHF6dWduIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjQwNDAxOTQsImV4cCI6MjA3OTYxNjE5NH0.ebEFOmTgUFwOefA9FvVAxmm9jcTDVLDi5OLx_3_wh8k';
+        let supabaseClient;
+
+        function initializeSupabase() {
+            if (typeof window.supabase !== '') {
+                supabaseClient = window.supabase.createClient(supabaseUrl, supabaseKey);
+                console.log('Supabase initialized successfully.');
+                return true;
+            } else {
+                console.error('Supabase library not loaded.');
+                alert('Gagal memuat library Supabase. Periksa koneksi internet.');
+                return false;
+            }
+        }
+
+        async function loadCatalog() {
+            if (!supabaseClient) return;
+
+            const grid = document.getElementById('catalogGrid');
+            const loadingHtml = `
+                <div class="col-span-full flex justify-center items-center py-12">
+                    <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-[#8C6D73]"></div>
+                    <span class="ml-4 text-stone-600">Loading katalog...</span>
+                </div>
+            `;
+            grid.innerHTML = loadingHtml; 
+
+            try {
+                console.time('Load Catalog Time'); 
+                const { data, error } = await supabaseClient
+                    .from('tabel_katalog')
+                    .select('*')
+                    .eq('kategori', 'papan')
+                    .order('created_at', { ascending: false })
+                    .limit(8); 
+
+                console.timeEnd('Load Catalog Time');
+
+                if (error) {
+                    console.error('Error loading catalog:', error);
+                    grid.innerHTML = '<p class="col-span-full text-center text-red-600">Gagal memuat katalog. Coba refresh halaman.</p>';
+                    return;
+                }
+
+                grid.innerHTML = ''; 
+
+                if (data.length === 0) {
+                    grid.innerHTML = '<p class="col-span-full text-center text-stone-600">Tidak ada produk untuk kategori ini.</p>';
+                    return;
+                }
+
+                data.forEach(item => {
+                    const fallbackSvg = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjRjBFOEU4Ii8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IiM4QzZENTczIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iMC4zZW0iPkJ1a2V0PC90ZXh0Pjwvc3ZnPg==';
+                    const imgSrc = item.gambar_url || fallbackSvg;
+                    const card = document.createElement('div');
+                    card.className = 'card-bg rounded-lg shadow-md overflow-hidden text-center p-4';
+                    card.innerHTML = `
+                        <div class="h-56 flex items-center justify-center">
+                            <img src="${imgSrc}" alt="${item.kode_paket}" class="h-full object-cover rounded" onerror="this.src='${fallbackSvg}'">
+                        </div>
+                        <div class="mt-4">
+                            <span class="block text-xs text-mauve-500">${item.kode_paket}</span>
+                            <button class="detail-btn mt-3 w-32 bg-[#8C6D73] text-white text-sm font-medium py-2 rounded-full hover:opacity-95 transition-colors" 
+                                    data-id="${item.kode_paket}" 
+                                    data-img="${imgSrc}" 
+                                    data-desc="${item.deskripsi || 'Deskripsi tidak tersedia'}" 
+                                    data-stok="${item.stok || 'Tidak tersedia'}">Detail</button>
+                        </div>
+                    `;
+                    grid.appendChild(card);
+                });
+            } catch (err) {
+                console.error('Unexpected error loading catalog:', err);
+                grid.innerHTML = '<p class="col-span-full text-center text-red-600">Terjadi kesalahan saat memuat katalog.</p>';
+            }
+        }
+
+        const modal = document.getElementById('productModal');
+        const modalImg = document.getElementById('modalImg');
+        const modalCode = document.getElementById('modalCode');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalDesc = document.getElementById('modalDesc');
+        const modalStock = document.getElementById('modalStock');
+        const modalClose = document.getElementById('modalClose');
+
+        function openModal(img, code, desc, stok) {
+            modalImg.src = img;
+            modalCode.textContent = code;
+            modalTitle.textContent = 'Detail Katalog';
+            modalDesc.textContent = desc;
+            modalStock.textContent = stok;
+
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            modal.classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+
+        document.addEventListener('click', (e) => {
+            if (e.target.classList.contains('detail-btn')) {
+                const btn = e.target;
+                const img = btn.dataset.img;
+                const code = btn.dataset.id;
+                const desc = btn.dataset.desc;
+                const stok = btn.dataset.stok;
+                openModal(img, code, desc, stok);
+            }
+        });
+
+        modalClose.addEventListener('click', closeModal);
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !modal.classList.contains('hidden')) closeModal();
+        });
+
+       document.getElementById('orderBtn').addEventListener('click', () => {
+        let pesan = " Halo , Saya Ingin Memesan.. ";
+        window.location.href = "https://wa.me/6281234567890?text=" + encodeURIComponent(pesan);
+        closeModal();
+      });
+
+        window.addEventListener('load', () => {
+            if (initializeSupabase()) {
+                loadCatalog();
+            }
+        });
+    </script>
+
+</body>
+</html>
