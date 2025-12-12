@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lily Florist Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .font-serif { font-family: 'Playfair Display', serif; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-700">
+
+    <div class="flex min-h-screen">
+        
+        <aside class="w-64 bg-[#dcaeb4] flex flex-col flex-shrink-0 transition-all duration-300">
+            
+            <div class="px-8 pt-8 pb-10 flex items-center justify-between">
+                <h1 class="text-2xl font-serif text-[#5c3236] font-bold tracking-wide">Lily Florist</h1>
+                <button class="text-[#5c3236] focus:outline-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </div>
+
+            <nav class="flex-1 px-6 space-y-6 overflow-y-auto">
+                
+                <a href="#" class="flex items-center px-4 py-3 text-sm font-medium text-[#5c3236] bg-[#f3dada]/50 rounded md shadow-sm backdrop-blur-sm">
+                    <svg class="mr-3 h-5 w-5 opacity-80" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+                    </svg>
+                    Dashboard
+                </a>
+
+                <div>
+                    <p class="px-2 text-xs font-normal text-[#5c3236] uppercase tracking-widest mb-3 opacity-90">Katalog</p>
+                    <a href="#" class="flex items-center px-2 py-1 text-sm font-medium text-[#5c3236] hover:text-[#3a2022] transition-colors group">
+                        <svg class="mr-3 h-5 w-5 opacity-80" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                        Manajemen Katalog
+                    </a>
+                </div>
+
+                <div>
+                    <p class="px-2 text-xs font-normal text-[#5c3236] uppercase tracking-widest mb-3 opacity-90">Transaksi</p>
+                    <div class="space-y-3">
+                        <a href="#" class="flex items-center px-2 py-1 text-sm font-medium text-[#5c3236] hover:text-[#3a2022] transition-colors">
+                            <svg class="mr-3 h-5 w-5 opacity-80" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                            </svg>
+                            Pendapatan
+                        </a>
+                        <a href="#" class="flex items-center px-2 py-1 text-sm font-medium text-[#5c3236] hover:text-[#3a2022] transition-colors">
+                            <svg class="mr-3 h-5 w-5 opacity-80" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                            </svg>
+                            Pengeluaran
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="mt-6"></div> 
+                    <p class="px-2 text-xs font-normal text-[#5c3236] uppercase tracking-widest mb-3 opacity-90">Ulasan Pelanggan</p>
+                    <a href="#" class="flex items-center px-2 py-1 text-sm font-medium text-[#5c3236] hover:text-[#3a2022] transition-colors">
+                         <svg class="mr-3 h-5 w-5 opacity-80" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+                        </svg>
+                        Ulasan
+                    </a>
+                 </div>
+
+                <div>
+                    <a href="#" class="flex items-center px-2 py-2 text-sm font-medium text-[#5c3236] hover:text-[#3a2022] transition-colors">
+                        <svg class="mr-3 h-5 w-5 opacity-80" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        Logout
+                    </a>
+                </div>
+            </nav>
+        </aside>
+
+        <main class="flex-1 flex flex-col bg-[#fdfaf9]">
+            
+            <header class="h-16 bg-[#f7f0ef] flex items-center px-8 border-b border-gray-200">
+                <h2 class="text-xl font-medium text-gray-500">Selamat Datang, Administrator</h2>
+            </header>
+
+            <div class="p-8">
+                <h2 class="text-2xl font-bold text-[#4a3b3b] mb-6">Kelola Ulasan Pelanggan</h2>
+
+                <div class="bg-white p-1 rounded-sm shadow-sm"> 
+                    <h3 class="font-bold text-gray-700 mb-2 p-2">Ulasan Masuk</h3>
+                    
+                    <div class="flex items-center mb-4 text-sm text-gray-600 px-2">
+                        <span class="mr-2">Show</span>
+                        <select class="border border-gray-400 rounded px-2 py-1 bg-white focus:outline-none focus:ring-1 focus:ring-pink-400">
+                            <option>5</option>
+                            <option>10</option>
+                            <option>25</option>
+                        </select>
+                        <span class="ml-2">entries</span>
+                    </div>
+
+                    <div class="overflow-x-auto border border-[#dfaeb3] m-2">
+                        <table class="w-full text-left text-sm text-gray-700">
+                            <thead class="bg-[#dfaeb3] text-gray-700 uppercase font-semibold">
+                                <tr>
+                                    <th scope="col" class="px-6 py-3 border-r border-white/30 text-center w-12">No</th>
+                                    <th scope="col" class="px-6 py-3 border-r border-white/30 text-center">Tanggal</th>
+                                    <th scope="col" class="px-6 py-3 border-r border-white/30 text-center">Nama</th>
+                                    <th scope="col" class="px-6 py-3 border-r border-white/30 text-center">Rating</th>
+                                    <th scope="col" class="px-6 py-3 border-r border-white/30">Deskripsi Ulasan</th>
+                                    <th scope="col" class="px-6 py-3 text-center">Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-[#dfaeb3] border-b border-[#dfaeb3]">
+                                <tr class="bg-[#fcf6f6]">
+                                    <td class="px-6 py-4 text-center border-r border-[#dfaeb3]">1</td>
+                                    <td class="px-6 py-4 text-center border-r border-[#dfaeb3]">20/10/2025</td>
+                                    <td class="px-6 py-4 text-center border-r border-[#dfaeb3]">Salma Agustin</td>
+                                    <td class="px-6 py-4 text-center border-r border-[#dfaeb3]">5/5</td>
+                                    <td class="px-6 py-4 border-r border-[#dfaeb3] text-gray-600">wawww toko bunganya sangat lengkap sekali</td>
+                                    <td class="px-6 py-4 text-center">
+                                        <button class="bg-[#eb5757] hover:bg-red-600 text-white text-xs px-3 py-1 rounded shadow-sm">
+                                            Hapus
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr class="bg-white h-12"><td class="border-r border-[#dfaeb3]"></td><td class="border-r border-[#dfaeb3]"></td><td class="border-r border-[#dfaeb3]"></td><td class="border-r border-[#dfaeb3]"></td><td class="border-r border-[#dfaeb3]"></td><td></td></tr>
+                                <tr class="bg-white h-12"><td class="border-r border-[#dfaeb3]"></td><td class="border-r border-[#dfaeb3]"></td><td class="border-r border-[#dfaeb3]"></td><td class="border-r border-[#dfaeb3]"></td><td class="border-r border-[#dfaeb3]"></td><td></td></tr>
+                                <tr class="bg-white h-12"><td class="border-r border-[#dfaeb3]"></td><td class="border-r border-[#dfaeb3]"></td><td class="border-r border-[#dfaeb3]"></td><td class="border-r border-[#dfaeb3]"></td><td class="border-r border-[#dfaeb3]"></td><td></td></tr>
+                                <tr class="bg-white h-12"><td class="border-r border-[#dfaeb3]"></td><td class="border-r border-[#dfaeb3]"></td><td class="border-r border-[#dfaeb3]"></td><td class="border-r border-[#dfaeb3]"></td><td class="border-r border-[#dfaeb3]"></td><td></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="flex items-center justify-between mt-4 px-2 pb-2">
+                        <div class="text-sm text-gray-600">
+                            Showing 1 to 10 entries
+                        </div>
+                        <div class="inline-flex rounded-md shadow-sm border border-gray-300">
+                            <a href="#" class="px-3 py-1 text-sm font-medium text-gray-500 bg-white border-r border-gray-300 hover:bg-gray-50 rounded-l-md">
+                                Previous
+                            </a>
+                            <a href="#" class="px-3 py-1 text-sm font-medium text-white bg-[#dfaeb3] border-r border-gray-300">
+                                1
+                            </a>
+                            <a href="#" class="px-3 py-1 text-sm font-medium text-gray-700 bg-white border-r border-gray-300 hover:bg-gray-50">
+                                2
+                            </a>
+                            <a href="#" class="px-3 py-1 text-sm font-medium text-gray-700 bg-white border-r border-gray-300 hover:bg-gray-50">
+                                3
+                            </a>
+                            <a href="#" class="px-3 py-1 text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 rounded-r-md">
+                                Next
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </main>
+    </div>
+
+</body>
+</html>
