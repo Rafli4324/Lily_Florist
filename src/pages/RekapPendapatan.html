@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rekap Pendapatan Bulanan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'dusty-header': '#DCA8A8',   
+                        'dusty-border': '#ECD3D3',   
+                        'dusty-row': '#FFFBFB',      
+                        'text-primary': '#4A4A4A',   
+                        'btn-hover': '#C89090',     
+                        'pagination-active': '#D6A3A3', 
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        
+        td, th {
+            border-right: 1px solid #ECD3D3;
+        }
+        td:last-child, th:last-child {
+            border-right: none;
+        }
+        tr:last-child td {
+            border-bottom: 1px solid #ECD3D3;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 flex justify-center items-start min-h-screen p-8">
+
+    <div class="w-full max-w-6xl p-8 rounded-xl shadow-sm min-h-[600px]">
+        
+        <div class="flex justify-between items-center mb-8">
+            <div class="flex items-center gap-4">
+                <button class="text-text-primary hover:text-black transition-colors" onclick="window.history.back()">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-8 h-8">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+                    </svg>
+                </button>
+                <h1 class="text-3xl font-bold text-text-primary tracking-tight">Rekap Pendapatan Bulanan</h1>
+            </div>
+            
+            <div class="flex items-center gap-4">
+                <select id="monthSelect" class="border border-gray-300 rounded px-3 py-2 text-sm">
+                    <option value="01">Januari</option>
+                    <option value="02">Februari</option>
+                    <option value="03">Maret</option>
+                    <option value="04">April</option>
+                    <option value="05">Mei</option>
+                    <option value="06">Juni</option>
+                    <option value="07">Juli</option>
+                    <option value="08">Agustus</option>
+                    <option value="09">September</option>
+                    <option value="10">Oktober</option>
+                    <option value="11">November</option>
+                    <option value="12">Desember</option>
+                </select>
+                <select id="yearSelect" class="border border-gray-300 rounded px-3 py-2 text-sm">
+                    <option value="2023">2023</option>
+                    <option value="2024">2024</option>
+                    <option value="2025">2025</option>
+                </select>
+                <button id="loadDataBtn" class="bg-dusty-header hover:bg-btn-hover text-text-primary font-semibold py-2 px-6 rounded shadow-sm text-sm transition-colors">
+                    Muat Data
+                </button>
+                <button id="downloadBtn" class="bg-dusty-header hover:bg-btn-hover text-text-primary font-semibold py-2 px-6 rounded shadow-sm text-sm transition-colors">
+                    Unduh Data
+                </button>
+            </div>
+        </div>
+
+        <div class="border border-dusty-border rounded-t-lg overflow-hidden mb-6">
+            <table class="w-full border-collapse">
+                <thead>
+                    <tr class="bg-dusty-header text-text-primary text-base">
+                        <th class="py-4 px-2 font-semibold text-center w-16 border-b border-dusty-border">No</th>
+                        <th class="py-4 px-4 font-semibold text-center w-36 border-b border-dusty-border">Tanggal</th>
+                        <th class="py-4 px-4 font-semibold text-center w-48 border-b border-dusty-border">Pemasukan</th>
+                        <th class="py-4 px-4 font-semibold text-center w-48 border-b border-dusty-border">Pengeluaran</th>
+                        <th class="py-4 px-6 font-semibold text-center border-b border-dusty-border">Keterangan</th>
+                    </tr>
+                </thead>
+                <tbody id="rekapBody" class="text-text-primary text-sm bg-dusty-row">
+                    
+                </tbody>
+            </table>
+        </div>
+
+        <div class="flex justify-between items-center text-sm text-gray-600">
+            <div id="showingText">
+                Showing 0 to 0 entries
+            </div>
+            <div id="paginationControls" class="flex items-center gap-1">
+                
+            </div>
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script>
+        const supabaseUrl = 'https://uorxpavndirbgapqzugn.supabase.co/';
+        const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVvcnhwYXZuZGlyYmdhcHF6dWduIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjQwNDAxOTQsImV4cCI6MjA3OTYxNjE5NH0.ebEFOmTgUFwOefA9FvVAxmm9jcTDVLDi5OLx_3_wh8k';
+        let supabaseClient;
+
+        let currentPage = 1;
+        let itemsPerPage = 10;
+        let totalItems = 0;
+        let currentMonth = '';
+        let currentYear = '';
+        let allData = [];
+
+        const rekapBody = document.getElementById('rekapBody');
+        const showingText = document.getElementById('showingText');
+        const paginationControls = document.getElementById('paginationControls');
+        const monthSelect = document.getElementById('monthSelect');
+        const yearSelect = document.getElementById('yearSelect');
+        const loadDataBtn = document.getElementById('loadDataBtn');
+        const downloadBtn = document.getElementById('downloadBtn');
+
+        function initializeSupabase() {
+            if (typeof supabase === 'undefined') {
+                console.error('Supabase library not loaded.');
+                return false;
+            }
+            supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
+            return true;
+        }
+
+        function formatRupiah(angka) {
+            var number_string = angka.replace(/[^,\d]/g, '').toString(),
+                split = number_string.split(','),
+                sisa = split[0].length % 3,
+                rupiah = split[0].substr(0, sisa),
+                ribuan = split[0].substr(sisa).match(/\d{3}/gi);
+
+            if (ribuan) {
+                const separator = sisa ? '.' : '';
+                rupiah += separator + ribuan.join('.');
+            }
+            return 'Rp.' + rupiah + ',00';
+        }
+
+        async function loadRekap(month, year) {
+            if (!supabaseClient) return;
+
+            const startDate = `${year}-${month}-01`;
+            const endDate = new Date(year, month, 0).toISOString().split('T')[0];
+
+            try {
+                const { data: incomeData, error: incomeError } = await supabaseClient
+                    .from('tabel_pendapatan')
+                    .select('tanggal, jumlah, keterangan')
+                    .gte('tanggal', startDate)
+                    .lte('tanggal', endDate)
+                    .order('tanggal', { ascending: true });
+
+                if (incomeError) throw incomeError;
+
+                const { data: expenseData, error: expenseError } = await supabaseClient
+                    .from('tabel_pengeluaran')
+                    .select('tanggal, jumlah, keterangan')
+                    .gte('tanggal', startDate)
+                    .lte('tanggal', endDate)
+                    .order('tanggal', { ascending: true });
+
+                if (expenseError) throw expenseError;
+
+                allData = [];
+
+                incomeData.forEach(item => {
+                    allData.push({
+                        No: allData.length + 1,
+                        Tanggal: item.tanggal.split('-').reverse().join('/'),
+                        Pemasukan: formatRupiah(item.jumlah.toString()),
+                        Pengeluaran: '',
+                        Keterangan: item.keterangan
+                    });
+                });
+
+                expenseData.forEach(item => {
+                    allData.push({
+                        No: allData.length + 1,
+                        Tanggal: item.tanggal.split('-').reverse().join('/'),
+                        Pemasukan: '',
+                        Pengeluaran: formatRupiah(item.jumlah.toString()),
+                        Keterangan: item.keterangan
+                    });
+                });
+
+                allData.sort((a, b) => {
+                    const dateA = a.Tanggal.split('/').reverse().join('-');
+                    const dateB = b.Tanggal.split('/').reverse().join('-');
+                    return new Date(dateA) - new Date(dateB);
+                });
+
+                allData.forEach((item, index) => {
+                    item.No = index + 1;
+                });
+
+                totalItems = allData.length;
+
+                const offset = (currentPage - 1) * itemsPerPage;
+                const paginatedData = allData.slice(offset, offset + itemsPerPage);
+
+                rekapBody.innerHTML = '';
+
+                if (paginatedData.length === 0) {
+                    rekapBody.innerHTML = '<tr><td colspan="5" class="text-center py-4">Tidak ada data untuk bulan ini.</td></tr>';
+                } else {
+                    paginatedData.forEach((item) => {
+                        const row = document.createElement('tr');
+                        row.innerHTML = `
+                            <td class="py-3 px-2 border-b border-dusty-border text-center font-bold text-[#443131]">${item.No}</td>
+                            <td class="py-3 px-4 border-b border-dusty-border text-center">${item.Tanggal}</td>
+                            <td class="py-3 px-4 border-b border-dusty-border text-left pl-8">${item.Pemasukan}</td>
+                            <td class="py-3 px-4 border-b border-dusty-border text-center">${item.Pengeluaran}</td>
+                            <td class="py-3 px-6 border-b border-dusty-border text-center">${item.Keterangan}</td>
+                        `;
+                        rekapBody.appendChild(row);
+                    });
+                }
+
+                const start = offset + 1;
+                const end = Math.min(offset + paginatedData.length, totalItems);
+                showingText.textContent = `Showing ${start} to ${end} of ${totalItems} entries`;
+
+                renderPagination();
+
+            } catch (err) {
+                console.error('Error loading rekap:', err);
+                alert('Gagal memuat data rekap.');
+            }
+        }
+
+        function renderPagination() {
+            const totalPages = Math.ceil(totalItems / itemsPerPage);
+            paginationControls.innerHTML = '';
+
+            if (totalPages <= 1) return;
+
+            const prevBtn = document.createElement('button');
+            prevBtn.textContent = 'Previous';
+            prevBtn.className = 'px-3 py-1 border rounded text-xs bg-gray-50 text-gray-600';
+            if (currentPage === 1) prevBtn.disabled = true;
+            prevBtn.addEventListener('click', () => {
+                if (currentPage > 1) {
+                    currentPage--;
+                    loadRekap(currentMonth, currentYear);
+                }
+            });
+            paginationControls.appendChild(prevBtn);
+
+            for (let i = 1; i <= totalPages; i++) {
+                const pageBtn = document.createElement('button');
+                pageBtn.textContent = i;
+                pageBtn.className = 'px-3 py-1 border rounded text-xs';
+                if (i === currentPage) {
+                    pageBtn.className += ' bg-pagination-active font-medium text-white';
+                } else {
+                    pageBtn.className += ' bg-white text-gray-600';
+                }
+                pageBtn.addEventListener('click', () => {
+                    currentPage = i;
+                    loadRekap(currentMonth, currentYear);
+                });
+                paginationControls.appendChild(pageBtn);
+            }
+
+            const nextBtn = document.createElement('button');
+            nextBtn.textContent = 'Next';
+            nextBtn.className = 'px-3 py-1 border rounded text-xs bg-gray-50 text-gray-600';
+            if (currentPage === totalPages) nextBtn.disabled = true;
+            nextBtn.addEventListener('click', () => {
+                if (currentPage < totalPages) {
+                    currentPage++;
+                    loadRekap(currentMonth, currentYear);
+                }
+            });
+            paginationControls.appendChild(nextBtn);
+        }
+
+        function downloadExcel() {
+            if (allData.length === 0) {
+                alert('Tidak ada data untuk diunduh.');
+                return;
+            }
+
+            const ws = XLSX.utils.json_to_sheet(allData);
+            const wb = XLSX.utils.book_new();
+            XLSX.utils.book_append_sheet(wb, ws, 'Rekap Pendapatan');
+            XLSX.writeFile(wb, `Rekap_Pendapatan_${currentMonth}_${currentYear}.xlsx`);
+        }
+
+        loadDataBtn.addEventListener('click', () => {
+            currentMonth = monthSelect.value;
+            currentYear = yearSelect.value;
+            currentPage = 1;
+            loadRekap(currentMonth, currentYear);
+        });
+
+        downloadBtn.addEventListener('click', downloadExcel);
+
+        const now = new Date();
+        monthSelect.value = String(now.getMonth() + 1).padStart(2, '0');
+        yearSelect.value = now.getFullYear().toString();
+        currentMonth = monthSelect.value;
+        currentYear = yearSelect.value;
+
+        document.addEventListener('DOMContentLoaded', () => {
+            if (initializeSupabase()) {
+                loadRekap(currentMonth, currentYear);
+            }
+        });
+    </script>
+
+</body>
+</html>

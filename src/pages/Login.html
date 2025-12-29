@@ -31,7 +31,7 @@
 
     const supabaseUrl = 'https://uorxpavndirbgapqzugn.supabase.co';
     const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVvcnhwYXZuZGlyYmdhcHF6dWduIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjQwNDAxOTQsImV4cCI6MjA3OTYxNjE5NH0.ebEFOmTgUFwOefA9FvVAxmm9jcTDVLDi5OLx_3_wh8k';
-    const supabase = window.supabase.createClient(supabaseUrl, supabaseAnonKey);
+    const supabaseClient = window.supabase.createClient(supabaseUrl, supabaseAnonKey);
 
     async function handleLogin(event) {
       event.preventDefault();
@@ -40,7 +40,7 @@
       const password = document.querySelector('input[name="password"]').value;
 
       try {
-        const { data, error } = await supabase.auth.signInWithPassword({
+        const { data, error } = await supabaseClient.auth.signInWithPassword({
           email: email,
           password: password,
         });
@@ -49,7 +49,7 @@
           alert('Login gagal: ' + error.message);
         } else {
           alert('Login berhasil! Selamat datang.');
-          window.location.href = 'dashboardadmin.php';
+          window.location.href = 'dashboardadmin.html';
         }
       } catch (err) {
         console.error('Error:', err);

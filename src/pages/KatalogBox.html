@@ -46,28 +46,28 @@
         .page-wrap { max-width:1180px; margin-left:auto; margin-right:auto; padding-left:24px; padding-right:24px; }
     </style>
 </head>
-<body class="font-inter bg-white text-stone-800">
+<body class="font-sans bg-white text-stone-800">
 
     <nav class="absolute top-0 left-0 right-0 z-30">
-      <div class="page-wrap py-6 flex items-center justify-between">
+      <div class="max-w-7xl mx-auto px-6 py-8 flex items-center justify-between">
         <a href="index.html" class="flex items-center">
-        </a>
+            </a>
 
-        <div class="hidden md:flex items-center gap-8 text-stone-800 text-sm">
-          <a href="LandingPage.php#beranda" class="font-semibold hover:text-accent-pink transition-colors">Beranda</a>
-          <a href="LandingPage.php#tentang-kami" class="font-semibold hover:text-accent-pink transition-colors">Tentang Kami</a>
-          <a href="LandingPage.php#katalog" class="font-semibold hover:text-accent-pink transition-colors">Katalog</a>
-          <a href="LandingPage.php#kontak" class="font-semibold hover:text-accent-pink transition-colors">Kontak</a>
+        <div class="hidden md:flex items-center gap-10 text-stone-800 text-lg tracking-wide">
+          <a href="LandingPage.html#beranda" class="font-bold hover:text-white transition-colors">Beranda</a>
+          <a href="LandingPage.html#tentang-kami" class="font-bold hover:text-white transition-colors">Tentang Kami</a>
+          <a href="LandingPage.html#katalog" class="font-bold hover:text-white transition-colors">Katalog</a>
+          <a href="LandingPage.html#kontak" class="font-bold hover:text-white transition-colors">Kontak</a>
         </div>
 
         <button class="md:hidden p-2" aria-label="menu">
-          <svg class="w-6 h-6 text-stone-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="w-8 h-8 text-stone-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
           </svg>
         </button>
       </div>
     </nav>
-
+    
     <header class="hero-top min-h-[52vh] flex items-center relative overflow-hidden bg-gradient-to-b
     from-[#E0B8B8] from-15%
     via-rose-100 via-50%
@@ -76,18 +76,18 @@
 
             <div class="pt-6 md:pt-0">
                 <h1 class="font-serif-display text-6xl md:text-7xl text-stone-900 font-bold leading-tight">Kategori</h1>
-                <p class="font-serif-display text-xl text-mauve-500 mt-1">Bunga Papan</p>
+                <p class="font-serif-display text-xl text-mauve-500 mt-1">Bunga Box</p>
 
-                <img src="../img/bungapapan.png" alt="Bunga Papan" class="mt-6 rounded-md shadow-lg w-56 md:w-64">
+                <img src="../img/bungabox.png" alt="Buket" class="mt-6 rounded-md shadow-lg w-56 md:w-64">
             </div>
 
-            <div class="text-center md:text-left">
-                <h2 class="font-script text-3xl md:text-4xl text-[#8C6D73]">Wujudkan Keindahan dalam Setiap Rangkaian</h2>
-                <p class="mt-4 text-stone-600 max-w-lg mx-auto md:mx-0">
-                    Jadikan setiap momen lebih berkesan dengan rangkaian bunga dari toko Lily Florist
+            <div class="text-center ">
+                <h2 class="font-script text-3xl text-[#8C6D73]">Wujudkan Keindahan dalam Setiap Rangkaian</h2>
+                <p class="mt-4 text-stone-600">
+                    Jadikan setiap momen lebih berkesan dengan<br>rangkaian bunga dari toko Lily Florist
                 </p>
 
-                <a href="#" class="inline-block mt-6 px-6 py-2 rounded-full text-white btn-mauve shadow-md hover:opacity-95 transition-colors">Belanja Sekarang</a>
+                <a href="https://wa.me/6281234567890" class="inline-block mt-6 px-6 py-2 rounded-full text-white btn-mauve shadow-md hover:opacity-95 transition-colors">Belanja Sekarang</a>
             </div>
 
         </div>
@@ -179,7 +179,7 @@
                 const { data, error } = await supabaseClient
                     .from('tabel_katalog')
                     .select('*')
-                    .eq('kategori', 'papan')
+                    .eq('kategori', 'box')
                     .order('created_at', { ascending: false })
                     .limit(8); 
 
@@ -202,14 +202,14 @@
                     const fallbackSvg = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjRjBFOEU4Ii8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IiM4QzZENTczIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iMC4zZW0iPkJ1a2V0PC90ZXh0Pjwvc3ZnPg==';
                     const imgSrc = item.gambar_url || fallbackSvg;
                     const card = document.createElement('div');
-                    card.className = 'card-bg rounded-lg shadow-md overflow-hidden text-center p-4';
+                    card.className = 'bg-[#AA7B7B] shadow-md overflow-hidden text-center p-4';
                     card.innerHTML = `
                         <div class="h-56 flex items-center justify-center">
-                            <img src="${imgSrc}" alt="${item.kode_paket}" class="h-full object-cover rounded" onerror="this.src='${fallbackSvg}'">
+                            <img src="${imgSrc}" alt="${item.kode_paket}" class="h-full object-cover " onerror="this.src='${fallbackSvg}'">
                         </div>
                         <div class="mt-4">
-                            <span class="block text-xs text-mauve-500">${item.kode_paket}</span>
-                            <button class="detail-btn mt-3 w-32 bg-[#8C6D73] text-white text-sm font-medium py-2 rounded-full hover:opacity-95 transition-colors" 
+                            <span class="block text-xs text-[#FFDADA]">${item.kode_paket}</span>
+                            <button class="detail-btn mt-3 w-32 bg-[#443131CC] text-white text-sm font-medium py-2 rounded-full hover:opacity-95 transition-colors" 
                                     data-id="${item.kode_paket}" 
                                     data-img="${imgSrc}" 
                                     data-desc="${item.deskripsi || 'Deskripsi tidak tersedia'}" 
@@ -267,7 +267,7 @@
             if (e.key === 'Escape' && !modal.classList.contains('hidden')) closeModal();
         });
 
-       document.getElementById('orderBtn').addEventListener('click', () => {
+        document.getElementById('orderBtn').addEventListener('click', () => {
         let pesan = " Halo , Saya Ingin Memesan.. ";
         window.location.href = "https://wa.me/6281234567890?text=" + encodeURIComponent(pesan);
         closeModal();

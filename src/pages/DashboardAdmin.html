@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Dashboard Admin - Lily Florist</title>
+
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Custom font mimics */
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@400;500;600&display=swap');
+    
+    body { font-family: 'Inter', sans-serif; }
+    .font-serif { font-family: 'Playfair Display', serif; }
+    
+    .soft-card { 
+        background-color: #fcf9f8; 
+        border-radius: 4px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+    
+    .table-header-pink { background-color: #cf9c9f; color: #543233; }
+
+    .btn-pink {
+      background-color: #cf9c9f;
+      color: #543233;
+      transition: background-color 0.2s;
+    }
+    .btn-pink:hover { background-color: #c28b8e; }
+  </style>
+</head>
+<body class="antialiased bg-white text-gray-700 ">
+  <div class="flex h-screen">
+    
+    <aside class="w-64 bg-[#dcaeb4] flex flex-col flex-shrink-0 transition-all duration-300">
+            
+            <div class="px-8 pt-8 pb-10 flex items-center justify-between">
+                <h1 class="text-[26px] font-serif text-[#5c3236] font-bold tracking-wide">Lily Florist</h1>
+                <button class="text-[#5c3236] focus:outline-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </div>
+
+            <nav class="flex-1 px-6 space-y-6 overflow-y-auto">
+                
+                <a href="DashboardAdmin.html" class="flex items-center px-4 py-3 text-sm font-medium text-[#5c3236] flex items-center gap-3 px-3 py-2 rounded-md bg-[#f3dada]/50 rounded md shadow-sm backdrop-blur-sm">
+                    <svg class="mr-3 h-5 w-5 opacity-80" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+                    </svg>
+                    Dashboard
+                </a>
+
+                <div>
+                    <p class="px-2 text-xs font-normal text-[#5c3236] uppercase tracking-widest mb-3 opacity-90">Katalog</p>
+                    <a href="ManajemenKatalog.html" class="flex items-center px-2 py-1 text-sm font-medium text-[#5c3236] flex items-center gap-3 px-3 py-2 rounded-md hover:bg-[#efdcdd] hover:text-[#3a2022] transition-colors group">
+                        <svg class="mr-3 h-5 w-5 opacity-80" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                        Manajemen Katalog
+                    </a>
+                </div>
+
+                <div>
+                    <p class="px-2 text-xs font-normal text-[#5c3236] uppercase tracking-widest mb-3 opacity-90">Transaksi</p>
+                    <div class="space-y-3">
+                        <a href="Pendapatan.html" class="flex items-center px-2 py-1 text-sm font-medium text-[#5c3236] flex items-center gap-3 px-3 py-2 rounded-md hover:bg-[#efdcdd] hover:text-[#3a2022] transition-colors">
+                            <svg class="mr-3 h-5 w-5 opacity-80" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                            </svg>
+                            Pendapatan
+                        </a>
+                        <a href="Pengeluaran.html" class="flex items-center px-2 py-1 text-sm font-medium text-[#5c3236] flex items-center gap-3 px-3 py-2 rounded-md hover:bg-[#efdcdd] hover:text-[#3a2022] transition-colors">
+                            <svg class="mr-3 h-5 w-5 opacity-80" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                            </svg>
+                            Pengeluaran
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="mt-6"></div> 
+                    <p class="px-2 text-xs font-normal text-[#5c3236] uppercase tracking-widest mb-3 opacity-90">Ulasan Pelanggan</p>
+                    <a href="UlasanAdmin.html" class="flex items-center px-4 py-3 text-sm font-medium text-[#5c3236]  hover:bg-[#efdcdd] rounded md shadow-sm backdrop-blur-sm">
+                         <svg class="mr-3 h-5 w-5 opacity-80" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+                        </svg>
+                        Ulasan
+                    </a>
+                 </div>
+
+                <div>
+                    <button id="logoutBtn" class="w-full flex items-center px-4 py-3 text-sm font-medium text-[#5c3236] hover:bg-[#efdcdd] rounded md shadow-sm backdrop-blur-sm hover:text-[#3a2022] transition-colors">
+                        <svg class="mr-3 h-5 w-5 opacity-80" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        Logout
+                    </button>
+                </div>
+            </nav>
+        </aside>
+
+        
+    <div class="flex-1 flex flex-col">
+      
+      <header class="h-[105px] bg-[#F9F5F0] border-b flex items-center px-8">
+        <div class="text-[25px] font-semibold text-[#7a675f]">Selamat Datang, Administrator</div>
+      </header>
+
+      
+      <main class="p-8 overflow-auto">
+        <h1 class="text-2xl font-bold text-[#3b2b2a] mb-6">Dashboard</h1>
+
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
+          <div class="bg-[#fbf6f4] rounded-lg p-5 soft-card">
+            <div class="text-xs text-gray-500">Total Katalog</div>
+            <div id="totalCatalog" class="mt-3 text-3xl font-semibold">0</div>
+          </div>
+
+          <div class="bg-[#fbf6f4] rounded-lg p-5 soft-card">
+            <div class="text-xs text-gray-500">Pendapatan (Hari Ini)</div>
+            <div id="totalIncomeToday" class="mt-3 text-lg font-semibold">Rp.0,00</div>
+            <div class="text-xs text-gray-400 mt-2">Bulanan: <span id="totalIncomeMonth">Rp.0,00</span></div>
+          </div>
+
+          <div class="bg-[#fbf6f4] rounded-lg p-5 soft-card">
+            <div class="text-xs text-gray-500">Pengeluaran (Hari Ini)</div>
+            <div id="totalExpenseToday" class="mt-3 text-lg font-semibold">Rp.0,00</div>
+            <div class="text-xs text-gray-400 mt-2">Bulanan: <span id="totalExpenseMonth">Rp.0,00</span></div>
+          </div>
+
+          <div class="bg-[#fbf6f4] rounded-lg p-5 soft-card">
+            <div class="text-xs text-gray-500">Sisa Uang</div>
+            <div id="sisaUang" class="mt-3 text-lg font-semibold">Rp.0,00</div>
+          </div>
+        </div>
+
+        
+        <section class="max-w-3xl">
+          <h2 class="text-base font-semibold mb-4">Rekap Pendapatan Bulanan</h2>
+
+          <div class="overflow-hidden rounded-md border border-[#e7c9c9]">
+            <div class="bg-[#ddabab] px-4 py-2 text-sm font-medium text-white">
+              <div class="grid grid-cols-3 gap-0">
+                <div class="pl-4">Rekap Keuangan</div>
+                <div class="text-center">Bulan</div>
+                <div class="text-right pr-4">Detail</div>
+              </div>
+            </div>
+
+            <div class="bg-white">
+              <table class="w-full text-sm" id="rekapTable">
+                <tbody>
+                  
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+  const supabaseUrl = 'https://uorxpavndirbgapqzugn.supabase.co'; 
+  const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVvcnhwYXZuZGlyYmdhcHF6dWduIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjQwNDAxOTQsImV4cCI6MjA3OTYxNjE5NH0.ebEFOmTgUFwOefA9FvVAxmm9jcTDVLDi5OLx_3_wh8k'; 
+  let supabaseClient;
+
+  function initializeSupabase() {
+    if (typeof supabase === 'undefined') {
+      console.error('Supabase library not loaded.');
+      return false;
+    }
+    supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
+    return true;
+  }
+
+  function formatRupiah(angka) {
+    const isNegative = angka < 0;
+    const absAngka = Math.abs(angka);
+    var number_string = absAngka.toString().replace(/[^,\d]/g, '').toString(),
+        split = number_string.split(','),
+        sisa = split[0].length % 3,
+        rupiah = split[0].substr(0, sisa),
+        ribuan = split[0].substr(sisa).match(/\d{3}/gi);
+    if (ribuan) {
+      const separator = sisa ? '.' : '';
+      rupiah += separator + ribuan.join('.');
+    }
+    return (isNegative ? '-Rp.' : 'Rp.') + rupiah + ',00';
+  }
+
+  function getMonthName(month) {
+    const months = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+    return months[month - 1];
+  }
+
+  async function loadMonthlyRekap() {
+    if (!supabaseClient) return;
+
+    const currentYear = new Date().getFullYear();
+    const rekapTableBody = document.getElementById('rekapTable').querySelector('tbody');
+    rekapTableBody.innerHTML = '';
+
+    try {
+      // Ambil data untuk 3 bulan terakhir
+      for (let i = 2; i >= 0; i--) {
+        const date = new Date();
+        date.setMonth(date.getMonth() - i);
+        const month = date.getMonth() + 1;
+        const year = date.getFullYear();
+        const startOfMonth = `${year}-${String(month).padStart(2, '0')}-01`;
+        const startOfNextMonth = month === 12 ? `${year + 1}-01-01` : `${year}-${String(month + 1).padStart(2, '0')}-01`;
+
+        const { data: incomeData, error: incomeError } = await supabaseClient
+          .from('tabel_pendapatan')
+          .select('jumlah')
+          .gte('tanggal', startOfMonth)
+          .lt('tanggal', startOfNextMonth);
+        if (incomeError) throw incomeError;
+        const totalIncome = incomeData.reduce((sum, item) => sum + item.jumlah, 0);
+
+        const { data: expenseData, error: expenseError } = await supabaseClient
+          .from('tabel_pengeluaran')
+          .select('jumlah')
+          .gte('tanggal', startOfMonth)
+          .lt('tanggal', startOfNextMonth);
+        if (expenseError) throw expenseError;
+        const totalExpense = expenseData.reduce((sum, item) => sum + item.jumlah, 0);
+
+        const netAmount = totalIncome - totalExpense;
+
+        const row = document.createElement('tr');
+        row.className = 'border-t border-[#f0dede]';
+        row.innerHTML = `
+          <td class="px-4 py-4 text-sm text-[#5b4a49]">${formatRupiah(netAmount)}</td>
+          <td class="text-center text-sm">${getMonthName(month)} ${year}</td>
+          <td class="text-right pr-4 text-sm text-[#e06b6b]"><a href="RekapPendapatan.html?month=${String(month).padStart(2, '0')}&year=${year}">Lihat detail</a></td>
+        `;
+        rekapTableBody.appendChild(row);
+      }
+    } catch (err) {
+      console.error('Error loading monthly rekap:', err);
+      // Fallback data
+      for (let i = 0; i < 3; i++) {
+        const row = document.createElement('tr');
+        row.className = 'border-t border-[#f0dede]';
+        row.innerHTML = `
+          <td class="px-4 py-4 text-sm text-[#5b4a49]">Rp.0,00</td>
+          <td class="text-center text-sm">-</td>
+          <td class="text-right pr-4 text-sm text-[#e06b6b]"><a href="#">Lihat detail</a></td>
+        `;
+        rekapTableBody.appendChild(row);
+      }
+    }
+  }
+
+  async function loadDashboardStats() {
+    if (!supabaseClient) return;
+
+    const today = new Date().toISOString().split('T')[0];
+    const currentMonth = new Date().getMonth() + 1;
+    const currentYear = new Date().getFullYear();
+    const startOfMonth = `${currentYear}-${String(currentMonth).padStart(2, '0')}-01`;
+    const startOfNextMonth = currentMonth === 12 ? `${currentYear + 1}-01-01` : `${currentYear}-${String(currentMonth + 1).padStart(2, '0')}-01`;
+
+    try {
+      
+      const { count: totalCatalog, error: catalogError } = await supabaseClient
+        .from('tabel_katalog')
+        .select('*', { count: 'exact', head: true });
+      if (catalogError) throw catalogError;
+
+      const { data: incomeToday, error: incomeError } = await supabaseClient
+        .from('tabel_pendapatan')
+        .select('jumlah')
+        .eq('tanggal', today);
+      if (incomeError) throw incomeError;
+      const totalIncomeToday = incomeToday.reduce((sum, item) => sum + item.jumlah, 0);
+
+      const { data: expenseToday, error: expenseError } = await supabaseClient
+        .from('tabel_pengeluaran')
+        .select('jumlah')
+        .eq('tanggal', today);
+      if (expenseError) throw expenseError;
+      const totalExpenseToday = expenseToday.reduce((sum, item) => sum + item.jumlah, 0);
+
+      const { data: incomeMonth, error: incomeMonthError } = await supabaseClient
+        .from('tabel_pendapatan')
+        .select('jumlah')
+        .gte('tanggal', startOfMonth)
+        .lt('tanggal', startOfNextMonth);
+      if (incomeMonthError) throw incomeMonthError;
+      const totalIncomeMonth = incomeMonth.reduce((sum, item) => sum + item.jumlah, 0);
+
+      const { data: expenseMonth, error: expenseMonthError } = await supabaseClient
+        .from('tabel_pengeluaran')
+        .select('jumlah')
+        .gte('tanggal', startOfMonth)
+        .lt('tanggal', startOfNextMonth);
+      if (expenseMonthError) throw expenseMonthError;
+      const totalExpenseMonth = expenseMonth.reduce((sum, item) => sum + item.jumlah, 0);
+
+      const sisaUang = totalIncomeToday - totalExpenseToday;
+
+      document.getElementById('totalCatalog').textContent = totalCatalog;
+      document.getElementById('totalIncomeToday').textContent = formatRupiah(totalIncomeToday);
+      document.getElementById('totalExpenseToday').textContent = formatRupiah(totalExpenseToday);
+      document.getElementById('totalIncomeMonth').textContent = formatRupiah(totalIncomeMonth);
+      document.getElementById('totalExpenseMonth').textContent = formatRupiah(totalExpenseMonth);
+      document.getElementById('sisaUang').textContent = formatRupiah(sisaUang);
+    } catch (err) {
+      console.error('Error loading dashboard stats:', err);
+
+      document.getElementById('totalCatalog').textContent = '0';
+      document.getElementById('totalIncomeToday').textContent = 'Rp.0,00';
+      document.getElementById('totalExpenseToday').textContent = 'Rp.0,00';
+      document.getElementById('totalIncomeMonth').textContent = 'Rp.0,00';
+      document.getElementById('totalExpenseMonth').textContent = 'Rp.0,00';
+      document.getElementById('sisaUang').textContent = 'Rp.0,00';
+    }
+  }
+
+  async function logout() {
+    if (!supabaseClient) return;
+    try {
+      await supabaseClient.auth.signOut();
+      window.location.href = 'Login.html';
+    } catch (error) {
+      console.error('Error during logout:', error);
+    }
+  }
+
+  async function checkAuth() {
+    if (!supabaseClient) return;
+    const { data: { user } } = await supabaseClient.auth.getUser();
+    if (!user) {
+      window.location.href = 'Login.html';
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    if (initializeSupabase()) {
+      checkAuth();
+      loadDashboardStats();
+      loadMonthlyRekap();
+    }
+
+    document.getElementById('logoutBtn').addEventListener('click', logout);
+  });
+</script>
+</body>
+</html>

@@ -6,6 +6,7 @@
     <title>Lily Florist Dashboard</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
     <style>
         body { font-family: 'Inter', sans-serif; }
         .font-serif { font-family: 'Playfair Display', serif; }
@@ -18,7 +19,7 @@
         <aside class="w-64 bg-[#dcaeb4] flex flex-col flex-shrink-0 transition-all duration-300">
             
             <div class="px-8 pt-8 pb-10 flex items-center justify-between">
-                <h1 class="text-2xl font-serif text-[#5c3236] font-bold tracking-wide">Lily Florist</h1>
+                <h1 class="text-[26px] font-serif text-[#5c3236] font-bold tracking-wide">Lily Florist</h1>
                 <button class="text-[#5c3236] focus:outline-none">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
@@ -28,7 +29,7 @@
 
             <nav class="flex-1 px-6 space-y-6 overflow-y-auto">
                 
-                <a href="#" class="flex items-center px-4 py-3 text-sm font-medium text-[#5c3236] bg-[#f3dada]/50 rounded md shadow-sm backdrop-blur-sm">
+                <a href="DashboardAdmin.html" class="flex items-center px-4 py-3 text-sm font-medium text-[#5c3236] flex items-center gap-3 px-3 py-2 rounded-md hover:bg-[#efdcdd] rounded md shadow-sm backdrop-blur-sm">
                     <svg class="mr-3 h-5 w-5 opacity-80" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
                     </svg>
@@ -37,7 +38,7 @@
 
                 <div>
                     <p class="px-2 text-xs font-normal text-[#5c3236] uppercase tracking-widest mb-3 opacity-90">Katalog</p>
-                    <a href="#" class="flex items-center px-2 py-1 text-sm font-medium text-[#5c3236] hover:text-[#3a2022] transition-colors group">
+                    <a href="ManajemenKatalog.html" class="flex items-center px-2 py-1 text-sm font-medium text-[#5c3236] flex items-center gap-3 px-3 py-2 rounded-md hover:bg-[#efdcdd] hover:text-[#3a2022] transition-colors group">
                         <svg class="mr-3 h-5 w-5 opacity-80" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                         </svg>
@@ -48,13 +49,13 @@
                 <div>
                     <p class="px-2 text-xs font-normal text-[#5c3236] uppercase tracking-widest mb-3 opacity-90">Transaksi</p>
                     <div class="space-y-3">
-                        <a href="#" class="flex items-center px-2 py-1 text-sm font-medium text-[#5c3236] hover:text-[#3a2022] transition-colors">
+                        <a href="Pendapatan.html" class="flex items-center px-2 py-1 text-sm font-medium text-[#5c3236] flex items-center gap-3 px-3 py-2 rounded-md hover:bg-[#efdcdd] hover:text-[#3a2022] transition-colors">
                             <svg class="mr-3 h-5 w-5 opacity-80" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                             </svg>
                             Pendapatan
                         </a>
-                        <a href="#" class="flex items-center px-2 py-1 text-sm font-medium text-[#5c3236] hover:text-[#3a2022] transition-colors">
+                        <a href="Pengeluaran.html" class="flex items-center px-2 py-1 text-sm font-medium text-[#5c3236] flex items-center gap-3 px-3 py-2 rounded-md hover:bg-[#efdcdd] hover:text-[#3a2022] transition-colors">
                             <svg class="mr-3 h-5 w-5 opacity-80" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                             </svg>
@@ -65,8 +66,8 @@
 
                 <div>
                     <div class="mt-6"></div> 
-                    <p class="px-2 text-xs font-normal text-[#5c3236] uppercase tracking-widest mb-3 opacity-90">Ulasan Pelanggan</p>
-                    <a href="#" class="flex items-center px-2 py-1 text-sm font-medium text-[#5c3236] hover:text-[#3a2022] transition-colors">
+                    <p class="px-2 text-xs font-normal text-[#5c3236]  uppercase tracking-widest mb-3 opacity-90">Ulasan Pelanggan</p>
+                    <a href="UlasanAdmin.html" class="flex items-center px-4 py-3 text-sm font-medium text-[#5c3236] bg-[#f3dada]/50 rounded md shadow-sm backdrop-blur-sm">
                          <svg class="mr-3 h-5 w-5 opacity-80" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
                         </svg>
@@ -75,20 +76,20 @@
                  </div>
 
                 <div>
-                    <a href="#" class="flex items-center px-2 py-2 text-sm font-medium text-[#5c3236] hover:text-[#3a2022] transition-colors">
+                    <button id="logoutBtn" class="w-full flex items-center px-4 py-3 text-sm font-medium text-[#5c3236] hover:bg-[#efdcdd] rounded md shadow-sm backdrop-blur-sm hover:text-[#3a2022] transition-colors">
                         <svg class="mr-3 h-5 w-5 opacity-80" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
                         Logout
-                    </a>
+                    </button>
                 </div>
             </nav>
         </aside>
 
         <main class="flex-1 flex flex-col bg-[#fdfaf9]">
             
-            <header class="h-16 bg-[#f7f0ef] flex items-center px-8 border-b border-gray-200">
-                <h2 class="text-xl font-medium text-gray-500">Selamat Datang, Administrator</h2>
+            <header class="h-[105px] bg-[#F9F5F0] border-b flex items-center px-8">
+                <div class="text-[25px] font-semibold text-[#7a675f]">Selamat Datang, Administrator</div>
             </header>
 
             <div class="p-8">
@@ -99,10 +100,10 @@
                     
                     <div class="flex items-center mb-4 text-sm text-gray-600 px-2">
                         <span class="mr-2">Show</span>
-                        <select class="border border-gray-400 rounded px-2 py-1 bg-white focus:outline-none focus:ring-1 focus:ring-pink-400">
-                            <option>5</option>
-                            <option>10</option>
-                            <option>25</option>
+                        <select id="entriesSelect" class="border border-gray-400 rounded px-2 py-1 bg-white focus:outline-none focus:ring-1 focus:ring-pink-400">
+                            <option value="5">5</option>
+                            <option value="10" selected>10</option>
+                            <option value="25">25</option>
                         </select>
                         <span class="ml-2">entries</span>
                     </div>
@@ -119,47 +120,17 @@
                                     <th scope="col" class="px-6 py-3 text-center">Aksi</th>
                                 </tr>
                             </thead>
-                            <tbody class="divide-y divide-[#dfaeb3] border-b border-[#dfaeb3]">
-                                <tr class="bg-[#fcf6f6]">
-                                    <td class="px-6 py-4 text-center border-r border-[#dfaeb3]">1</td>
-                                    <td class="px-6 py-4 text-center border-r border-[#dfaeb3]">20/10/2025</td>
-                                    <td class="px-6 py-4 text-center border-r border-[#dfaeb3]">Salma Agustin</td>
-                                    <td class="px-6 py-4 text-center border-r border-[#dfaeb3]">5/5</td>
-                                    <td class="px-6 py-4 border-r border-[#dfaeb3] text-gray-600">wawww toko bunganya sangat lengkap sekali</td>
-                                    <td class="px-6 py-4 text-center">
-                                        <button class="bg-[#eb5757] hover:bg-red-600 text-white text-xs px-3 py-1 rounded shadow-sm">
-                                            Hapus
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr class="bg-white h-12"><td class="border-r border-[#dfaeb3]"></td><td class="border-r border-[#dfaeb3]"></td><td class="border-r border-[#dfaeb3]"></td><td class="border-r border-[#dfaeb3]"></td><td class="border-r border-[#dfaeb3]"></td><td></td></tr>
-                                <tr class="bg-white h-12"><td class="border-r border-[#dfaeb3]"></td><td class="border-r border-[#dfaeb3]"></td><td class="border-r border-[#dfaeb3]"></td><td class="border-r border-[#dfaeb3]"></td><td class="border-r border-[#dfaeb3]"></td><td></td></tr>
-                                <tr class="bg-white h-12"><td class="border-r border-[#dfaeb3]"></td><td class="border-r border-[#dfaeb3]"></td><td class="border-r border-[#dfaeb3]"></td><td class="border-r border-[#dfaeb3]"></td><td class="border-r border-[#dfaeb3]"></td><td></td></tr>
-                                <tr class="bg-white h-12"><td class="border-r border-[#dfaeb3]"></td><td class="border-r border-[#dfaeb3]"></td><td class="border-r border-[#dfaeb3]"></td><td class="border-r border-[#dfaeb3]"></td><td class="border-r border-[#dfaeb3]"></td><td></td></tr>
+                            <tbody id="reviewsTableBody" class="divide-y divide-[#dfaeb3] border-b border-[#dfaeb3]">
+                                
                             </tbody>
                         </table>
                     </div>
 
                     <div class="flex items-center justify-between mt-4 px-2 pb-2">
-                        <div class="text-sm text-gray-600">
-                            Showing 1 to 10 entries
+                        <div id="showingInfo" class="text-sm text-gray-600">
+                            Showing 0 to 0 of 0 entries
                         </div>
-                        <div class="inline-flex rounded-md shadow-sm border border-gray-300">
-                            <a href="#" class="px-3 py-1 text-sm font-medium text-gray-500 bg-white border-r border-gray-300 hover:bg-gray-50 rounded-l-md">
-                                Previous
-                            </a>
-                            <a href="#" class="px-3 py-1 text-sm font-medium text-white bg-[#dfaeb3] border-r border-gray-300">
-                                1
-                            </a>
-                            <a href="#" class="px-3 py-1 text-sm font-medium text-gray-700 bg-white border-r border-gray-300 hover:bg-gray-50">
-                                2
-                            </a>
-                            <a href="#" class="px-3 py-1 text-sm font-medium text-gray-700 bg-white border-r border-gray-300 hover:bg-gray-50">
-                                3
-                            </a>
-                            <a href="#" class="px-3 py-1 text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 rounded-r-md">
-                                Next
-                            </a>
+                        <div id="paginationControls" class="inline-flex rounded-md shadow-sm border border-gray-300">
                         </div>
                     </div>
 
@@ -168,5 +139,236 @@
         </main>
     </div>
 
+    <div id="deleteConfirmModal" class="fixed inset-0 z-60 hidden items-center justify-center bg-black/50 backdrop-blur-sm px-4">
+        <div class="bg-white w-80 rounded-lg shadow-2xl p-8 text-center transform transition-all scale-100">
+          
+          <div class="mx-auto w-16 h-16 rounded-full border-2 border-red-500 flex items-center justify-center mb-4">
+            <svg class="w-8 h-8 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z"/>
+            </svg>
+          </div>
+          <h3 class="text-base font-medium text-gray-800 mb-1">Konfirmasi Penghapusan</h3>
+          <p class="text-base font-medium text-gray-800 mb-6">Yakin ingin menghapus data ini?</p>
+          <div class="flex gap-4 justify-center">
+            <button id="deleteConfirmNo" class="px-6 py-2 rounded shadow-sm text-sm font-medium bg-gray-200 text-gray-700">Tidak</button>
+            <button id="deleteConfirmYes" class="px-6 py-2 rounded shadow-sm text-sm font-medium bg-red-500 text-white">Ya</button>
+          </div>
+        </div>
+      </div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.39.3"></script>
+
+<script>
+    const supabaseUrl = 'https://uorxpavndirbgapqzugn.supabase.co/'; 
+    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVvcnhwYXZuZGlyYmdhcHF6dWduIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjQwNDAxOTQsImV4cCI6MjA3OTYxNjE5NH0.ebEFOmTgUFwOefA9FvVAxmm9jcTDVLDi5OLx_3_wh8k'; 
+    let supabase;
+   
+    function initializeSupabase() {
+        if (typeof window.supabase !== 'undefined') {
+            supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
+            return true;
+        } else {
+            console.error('Supabase script not loaded.');
+            return false;
+        }
+    }
+    
+    async function logout() {
+        if (!supabase) return;
+        try {
+            await supabase.auth.signOut();
+            window.location.href = 'Login.html';
+        } catch (error) {
+            console.error('Error during logout:', error);
+        }
+    }
+   
+    async function checkAuth() {
+        if (!supabase) return;
+        const { data: { user } } = await supabase.auth.getUser();
+        if (!user) {
+            window.location.href = 'Login.html'
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        if (initializeSupabase()) {
+            checkAuth();
+            
+            let currentPage = 1;
+            let entriesPerPage = 10;
+            let totalReviews = 0;
+            let reviewToDelete = null;
+
+            const entriesSelect = document.getElementById('entriesSelect');
+            const reviewsTableBody = document.getElementById('reviewsTableBody');
+            const showingInfo = document.getElementById('showingInfo');
+            const paginationControls = document.getElementById('paginationControls');
+            const deleteConfirmModal = document.getElementById('deleteConfirmModal');
+            const deleteConfirmNo = document.getElementById('deleteConfirmNo');
+            const deleteConfirmYes = document.getElementById('deleteConfirmYes');
+
+            async function loadReviews(page = 1) {
+                const from = (page - 1) * entriesPerPage;
+                const to = from + entriesPerPage - 1;
+
+                const { data, error, count } = await supabase
+                    .from('reviews')
+                    .select('*', { count: 'exact' })
+                    .order('created_at', { ascending: false })
+                    .range(from, to);
+
+                if (error) {
+                    console.error('Error loading reviews:', error);
+                    return;
+                }
+
+                totalReviews = count;
+                reviewsTableBody.innerHTML = '';
+
+                data.forEach((review, index) => {
+                    const no = from + index + 1;
+                    const date = new Date(review.created_at).toLocaleDateString('id-ID', {
+                        year: 'numeric', month: 'long', day: 'numeric'
+                    });
+                    const stars = '★'.repeat(review.rating) + '☆'.repeat(5 - review.rating);
+
+                    const row = `
+                        <tr class="${index % 2 === 0 ? 'bg-[#fcf6f6]' : 'bg-white'}">
+                            <td class="px-6 py-4 text-center border-r border-[#dfaeb3]">${no}</td>
+                            <td class="px-6 py-4 text-center border-r border-[#dfaeb3]">${date}</td>
+                            <td class="px-6 py-4 text-center border-r border-[#dfaeb3]">${review.name}</td>
+                            <td class="px-6 py-4 text-center border-r border-[#dfaeb3]">${review.rating}/5 ${stars}</td>
+                            <td class="px-6 py-4 border-r border-[#dfaeb3] text-gray-600">${review.comment}</td>
+                            <td class="px-6 py-4 text-center">
+                                <button class="delete-btn bg-[#eb5757] hover:bg-red-600 text-white text-xs px-3 py-1 rounded shadow-sm" data-id="${review.id}">
+                                    Hapus
+                                </button>
+                            </td>
+                        </tr>
+                    `;
+                    reviewsTableBody.innerHTML += row;
+                });
+
+                const emptyRows = entriesPerPage - data.length;
+                for (let i = 0; i < emptyRows; i++) {
+                    const emptyRow = `
+                        <tr class="${(data.length + i) % 2 === 0 ? 'bg-[#fcf6f6]' : 'bg-white'} h-12">
+                            <td class="border-r border-[#dfaeb3]"></td>
+                            <td class="border-r border-[#dfaeb3]"></td>
+                            <td class="border-r border-[#dfaeb3]"></td>
+                            <td class="border-r border-[#dfaeb3]"></td>
+                            <td class="border-r border-[#dfaeb3]"></td>
+                            <td></td>
+                        </tr>
+                    `;
+                    reviewsTableBody.innerHTML += emptyRow;
+                }
+
+                updateShowingInfo(page);
+                updatePagination(page);
+                attachDeleteListeners();
+            }
+
+            function updateShowingInfo(page) {
+                const from = (page - 1) * entriesPerPage + 1;
+                const to = Math.min(page * entriesPerPage, totalReviews);
+                showingInfo.textContent = `Showing ${from} to ${to} of ${totalReviews} entries`;
+            }
+
+            function updatePagination(currentPage) {
+                const totalPages = Math.ceil(totalReviews / entriesPerPage);
+                paginationControls.innerHTML = '';
+
+                const prevBtn = document.createElement('a');
+                prevBtn.href = '#';
+                prevBtn.className = `px-3 py-1 text-sm font-medium text-gray-500 bg-white border-r border-gray-300 hover:bg-gray-50 ${currentPage === 1 ? 'pointer-events-none opacity-50' : 'rounded-l-md'}`;
+                prevBtn.textContent = 'Previous';
+                prevBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    if (currentPage > 1) {
+                        currentPage--;
+                        loadReviews(currentPage);
+                    }
+                });
+                paginationControls.appendChild(prevBtn);
+
+                for (let i = 1; i <= totalPages; i++) {
+                    const pageBtn = document.createElement('a');
+                    pageBtn.href = '#';
+                    pageBtn.className = `px-3 py-1 text-sm font-medium border-r border-gray-300 ${i === currentPage ? 'text-white bg-[#dfaeb3]' : 'text-gray-700 bg-white hover:bg-gray-50'}`;
+                    pageBtn.textContent = i;
+                    pageBtn.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        currentPage = i;
+                        loadReviews(currentPage);
+                    });
+                    paginationControls.appendChild(pageBtn);
+                }
+
+                const nextBtn = document.createElement('a');
+                nextBtn.href = '#';
+                nextBtn.className = `px-3 py-1 text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 ${currentPage === totalPages ? 'pointer-events-none opacity-50' : 'rounded-r-md'}`;
+                nextBtn.textContent = 'Next';
+                nextBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    if (currentPage < totalPages) {
+                        currentPage++;
+                        loadReviews(currentPage);
+                    }
+                });
+                paginationControls.appendChild(nextBtn);
+            }
+
+            function attachDeleteListeners() {
+                document.querySelectorAll('.delete-btn').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        reviewToDelete = e.target.getAttribute('data-id');
+                        deleteConfirmModal.classList.remove('hidden');
+                        deleteConfirmModal.classList.add('flex');
+                    });
+                });
+            }
+
+            deleteConfirmNo.addEventListener('click', () => {
+                deleteConfirmModal.classList.add('hidden');
+                deleteConfirmModal.classList.remove('flex');
+                reviewToDelete = null;
+            });
+
+            deleteConfirmYes.addEventListener('click', async () => {
+                if (reviewToDelete) {
+                    const { error } = await supabase
+                        .from('reviews')
+                        .delete()
+                        .eq('id', reviewToDelete);
+
+                    if (error) {
+                        console.error('Error deleting review:', error);
+                        alert('Gagal menghapus ulasan.');
+                    } else {
+                        deleteConfirmModal.classList.add('hidden');
+                        deleteConfirmModal.classList.remove('flex');
+                        reviewToDelete = null;
+                        loadReviews(currentPage);
+                    }
+                }
+            });
+
+            entriesSelect.addEventListener('change', () => {
+                entriesPerPage = parseInt(entriesSelect.value);
+                currentPage = 1;
+                loadReviews(currentPage);
+            });
+
+            loadReviews();
+        }
+
+        document.getElementById('logoutBtn').addEventListener('click', logout);
+        
+    });
+</script>
 </body>
 </html>
+

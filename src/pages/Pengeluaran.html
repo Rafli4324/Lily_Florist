@@ -29,58 +29,82 @@
     .btn-pink:hover { background-color: #c99ba0; }
   </style>
 </head>
-<body class="antialiased font-sans text-stone-700 bg-white overflow-hidden">
+<body class="antialiased text-stone-700 bg-white overflow-hidden">
 
   <div class="flex h-screen">
-    <aside class="w-64 bg-dusty-pink text-dusty-dark flex-shrink-0 flex flex-col">
-      <div class="px-6 py-8">
-        <div class="flex items-center justify-between">
-          <div class="text-2xl font-serif font-semibold">Lily Florist</div>
-          <button class="p-2 hover:bg-white/20 rounded">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
-          </button>
-        </div>
+    <aside class="w-64 bg-[#dcaeb4] flex flex-col flex-shrink-0 transition-all duration-300">
+            
+            <div class="px-8 pt-8 pb-10 flex items-center justify-between">
+                <h1 class="text-[26px] font-serif text-[#5c3236] font-bold tracking-wide">Lily Florist</h1>
+                <button class="text-[#5c3236] focus:outline-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </div>
 
-        <nav class="mt-8">
-          <a class="flex items-center gap-3 px-3 py-2 hover:bg-[#efdcdd] rounded-md text-sm shadow-inner soft-card-sm" href="DashboardAdmin.php">
-            <svg class="w-5 h-5 text-[#8a595b]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>
-            <span class="text-xs">Dashboard</span>
-          </a>
+            <nav class="flex-1 px-6 space-y-6 overflow-y-auto">
+                
+                <a href="DashboardAdmin.html" class="flex items-center px-4 py-3 text-sm font-medium text-[#5c3236] flex items-center gap-3 px-3 py-2 rounded-md hover:bg-[#efdcdd] rounded md shadow-sm backdrop-blur-sm">
+                    <svg class="mr-3 h-5 w-5 opacity-80" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+                    </svg>
+                    Dashboard
+                </a>
 
-          <div class="mt-6 text-sm">
-            <div class="text-xs uppercase tracking-wide mb-2">Katalog</div>
-            <a class="flex items-center gap-3 px-3 py-2 rounded-md hover:bg-[#efdcdd]" href="ManajemenKatalog.php">
-              <svg class="w-5 h-5 text-[#8a595b]" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-width="2" d="M3 7h18M3 12h18M3 17h18"/></svg>
-              <span>Manajemen Katalog</span>
-            </a>
-          </div>
+                <div>
+                    <p class="px-2 text-xs font-normal text-[#5c3236] uppercase tracking-widest mb-3 opacity-90">Katalog</p>
+                    <a href="ManajemenKatalog.html" class="flex items-center px-2 py-1 text-sm font-medium text-[#5c3236] flex items-center gap-3 px-3 py-2 rounded-md hover:bg-[#efdcdd] hover:text-[#3a2022] transition-colors group">
+                        <svg class="mr-3 h-5 w-5 opacity-80" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                        Manajemen Katalog
+                    </a>
+                </div>
 
-          <div class="mt-6 text-sm">
-            <div class="text-xs uppercase tracking-wide mb-2">Transaksi</div>
-            <a class="flex items-center gap-3 px-3 py-2 rounded-md hover:bg-[#efdcdd]" href="Pendapatan.php">
-              <svg class="w-5 h-5 text-[#8a595b]" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
-              <span>Pendapatan</span>
-            </a>
-            <a class="flex items-center bg-[#eecfd0] gap-3 px-3 py-2 rounded-md mt-2" href="Pengeluaran.php">
-              <svg class="w-5 h-5 text-[#8a595b]" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-width="2" d="M12 20V4m8 8H4"/></svg>
-              <span>Pengeluaran</span>
-            </a>
-          </div>
+                <div>
+                    <p class="px-2 text-xs font-normal text-[#5c3236] uppercase tracking-widest mb-3 opacity-90">Transaksi</p>
+                    <div class="space-y-3">
+                        <a href="Pendapatan.html" class="flex items-center px-2 py-1 text-sm font-medium text-[#5c3236] flex items-center gap-3 px-3 py-2 rounded-md hover:bg-[#efdcdd] hover:text-[#3a2022] transition-colors">
+                            <svg class="mr-3 h-5 w-5 opacity-80" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                            </svg>
+                            Pendapatan
+                        </a>
+                        <a href="Pengeluaran.html" class="flex items-center px-2 py-1 text-sm font-medium text-[#5c3236] flex items-center gap-3 px-3 py-2 rounded-md bg-[#f3dada]/50 hover:text-[#3a2022] transition-colors">
+                            <svg class="mr-3 h-5 w-5 opacity-80" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                            </svg>
+                            Pengeluaran
+                        </a>
+                    </div>
+                </div>
 
-          <div class="mt-8">
-            <a class="flex items-center gap-3 px-3 py-2 text-sm rounded-md hover:bg-[#efdcdd]" href="#">
-              <svg class="w-5 h-5 text-[#8a595b]" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10" stroke-width="2"/><path d="M12 8v4l3 3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              <span>Logout</span>
-            </a>
-          </div>
-        </nav>
-      </div>
-      
-    </aside>
+                <div>
+                    <div class="mt-6"></div> 
+                    <p class="px-2 text-xs font-normal text-[#5c3236]  uppercase tracking-widest mb-3 opacity-90">Ulasan Pelanggan</p>
+                    <a href="UlasanAdmin.html" class="flex items-center px-4 py-3 text-sm font-medium text-[#5c3236]  hover:bg-[#efdcdd] rounded md shadow-sm backdrop-blur-sm">
+                         <svg class="mr-3 h-5 w-5 opacity-80" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+                        </svg>
+                        Ulasan
+                    </a>
+                 </div>
+
+                <div>
+                    <button id="logoutBtn" class="w-full flex items-center px-4 py-3 text-sm font-medium text-[#5c3236] hover:bg-[#efdcdd] rounded md shadow-sm backdrop-blur-sm hover:text-[#3a2022] transition-colors">
+                        <svg class="mr-3 h-5 w-5 opacity-80" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        Logout
+                    </button>
+                </div>
+            </nav>
+        </aside>
 
     <div class="flex-1 flex flex-col min-w-0 bg-white">
-      <header class="h-16 bg-[#fcf9f8] border-b border-[#e7e5e4] flex items-center px-8 justify-between">
-        <div class="text-lg font-medium text-[#5e5050]">Selamat Datang, Administrator</div>
+      <header class="h-[115px] bg-[#F9F5F0] border-b flex items-center px-8">
+        <div class="text-[25px] font-semibold text-[#7a675f]">Selamat Datang, Administrator</div>
       </header>
 
       <main class="p-8 overflow-y-auto h-full">
@@ -657,10 +681,31 @@
     if (e.target === deleteConfirmModal) toggleModal(deleteConfirmModal, false);
   });
   
+  async function logout() {
+    if (!supabaseClient) return;
+    try {
+      await supabaseClient.auth.signOut();
+      window.location.href = 'Login.html';
+    } catch (error) {
+      console.error('Error during logout:', error);
+    }
+  }
+
+  async function checkAuth() {
+    if (!supabaseClient) return;
+    const { data: { user } } = await supabaseClient.auth.getUser();
+    if (!user) {
+      window.location.href = 'Login.html';
+    }
+  }
+
   document.addEventListener('DOMContentLoaded', () => {
     if (initializeSupabase()) {
+      checkAuth();
       loadExpense();
     }
+
+    document.getElementById('logoutBtn').addEventListener('click', logout);
   });
 </script>
 
