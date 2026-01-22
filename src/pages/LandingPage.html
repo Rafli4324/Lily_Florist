@@ -12,7 +12,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:wght@300;400;500;700&family=Italianno&family=Great+Vibes&display=swap" rel="stylesheet">
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
-
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
     <style>
@@ -23,67 +22,17 @@
             --color-hero-bg-1: #f6efef;
             --color-hero-bg-2: #f1e6e6;
         }
-
-        .btn-pink {
-          background-color: #cf9c9f;
-          color: #543233;
-          transition: background-color 0.2s;
-        }
-
+        .btn-pink { background-color: #cf9c9f; color: #543233; transition: background-color 0.2s; }
         .btn-pink:hover { background-color: #c28b8e; }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(180deg, var(--color-hero-bg-1) 0%, var(--color-hero-bg-2) 100%);
-            color: #333;
-        }
-
-        .hero-heading{
-            font-family: 'Playfair Display', serif;
-            color: var(--color-primary-dark);
-            font-weight: 700;
-            line-height: 0.9;
-            letter-spacing: -0.01em;
-        }
-        .hero-sub{
-            font-family: 'Playfair Display', serif;
-            color: var(--color-hero-sub);
-            font-style: italic;
-        }
-
-        .btn-primary{
-            background-color: var(--color-accent-pink);
-            color: #fff;
-            box-shadow: 0 6px 18px rgba(211,139,147,0.18);
-        }
-
-        .flowerSwiper .swiper-button-prev::after,
-        .flowerSwiper .swiper-button-next::after {
-            display: none;
-            content: none;
-        }
-
-        .custom-scrollbar::-webkit-scrollbar {
-            width: 6px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-track {
-            background: rgba(0,0,0,0.05);
-            border-radius: 10px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-thumb {
-            background: rgba(92, 64, 64, 0.4);
-            border-radius: 10px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-            background: rgba(92, 64, 64, 0.6);
-        }
-
-        @media (min-width:768px){
-            .hero-heading{ font-size: 6.5rem; }
-        }
-        @media (max-width:767px){
-            .hero-heading{ font-size: 3.2rem; }
-        }
+        body { font-family: 'Poppins', sans-serif; background: linear-gradient(180deg, var(--color-hero-bg-1) 0%, var(--color-hero-bg-2) 100%); color: #333; }
+        .hero-heading{ font-family: 'Playfair Display', serif; color: var(--color-primary-dark); font-weight: 700; line-height: 0.9; letter-spacing: -0.01em; }
+        .flowerSwiper .swiper-button-prev::after, .flowerSwiper .swiper-button-next::after { display: none; }
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: rgba(0,0,0,0.05); border-radius: 10px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(92, 64, 64, 0.4); border-radius: 10px; }
+        
+        @media (min-width:768px){ .hero-heading{ font-size: 6.5rem; } }
+        @media (max-width:767px){ .hero-heading{ font-size: 3.2rem; } }
     </style>
 
     <script>
@@ -95,8 +44,6 @@
                         'hero-sub': 'var(--color-hero-sub)',
                         'accent-pink': 'var(--color-accent-pink)',
                         'off-white': '#FDF6F6',
-                        'card-bg-1': '#7b4f4f',
-                        'card-bg-2': '#443131',
                         'light-mauve': '#f2dede',
                         'card-text-bg': '#443131'
                     },
@@ -115,90 +62,72 @@
 <body class="font-poppins bg-gradient-to-b from-[#E0B8B8] from-15% to-white to-90%">
 
 <header id="beranda" class="relative w-full h-screen overflow-hidden bg-[#E0B8B8]">
-    
     <div class="absolute inset-0 z-0">
-        <img 
-            src="../img/landing1.png" 
-            onerror="this.onerror=null;this.src='https://placehold.co/1200x800/dcc3c3/ffffff?text=Background+Image';"
-            alt="Bouquet of Flowers" 
-            class="w-full h-full object-cover object-left md:object-center animate-zoom"
-        >
+        <img src="../img/landing1.png" class="w-full h-full object-cover object-left md:object-center animate-zoom" alt="Background">
         <div class="absolute inset-0 bg-gradient-to-l from-[#8b6b6b]/40 via-transparent to-transparent"></div> 
     </div>
 
     <div class="relative z-10 w-full h-full flex flex-col justify-between">
-
-        <nav class="w-full p-6 md:p-10 pointer-events-none"> <div class="max-w-7xl mx-auto flex justify-end pointer-events-auto">
-                <div class="flex items-center space-x-6 md:space-x-10 text-white font-medium text-[clamp(1rem,1.2vw,1.25rem)] tracking-wide shadow-sm"> 
-                    <a href="#beranda" class="hover:text-accent-pink transition-colors duration-200">Beranda</a>
-                    <a href="#tentang-kami" class="hover:text-accent-pink transition-colors duration-200">Tentang Kami</a>
-                    <a href="#katalog" class="hover:text-accent-pink transition-colors duration-200">Katalog</a>
-                    <a href="#kontak" class="hover:text-accent-pink transition-colors duration-200">Kontak</a>
+        <nav class="w-full p-6 md:p-10 pointer-events-none"> 
+            <div class="max-w-7xl mx-auto flex justify-center md:justify-end pointer-events-auto">
+                <div class="flex items-center space-x-4 md:space-x-10 text-white font-medium text-[clamp(0.8rem,1.2vw,1.25rem)] tracking-wide shadow-sm"> 
+                    <a href="#beranda" class="hover:text-accent-pink">Beranda</a>
+                    <a href="#tentang-kami" class="hover:text-accent-pink">Tentang Kami</a>
+                    <a href="#katalog" class="hover:text-accent-pink">Katalog</a>
+                    <a href="#kontak" class="hover:text-accent-pink">Kontak</a>
                 </div>
             </div>
         </nav>
 
-        <div class="flex-grow flex items-center justify-end px-[5%] w-full">
-            <div class="w-full lg:w-[60%] flex flex-col items-end text-center mt-10 md:mt-0"> <div class="hero-heading text-[5.5rem] md:text-[8rem] lg:text-[9rem] font-serif-display leading-[0.8]">
-
-                <h1 class="bg-clip-text text-transparent bg-gradient-to-br from-[#6b3f3f] via-[#9c6f6f] to-[#5a3232] drop-shadow-sm  pb-[0.15em] leading-none mr-[4em]">
-                     Lily
-                </h1>
-                <h1 class="bg-clip-text text-transparent bg-gradient-to-br from-[#6b3f3f] via-[#9c6f6f] to-[#5a3232] drop-shadow-sm leading-none mr-[1em]">
-                    Florist
-                </h1>
-            </div>
-            <p class="font-great-vibes text-[clamp(2rem,5vw,3rem)] text-white mb-6 tracking-wider drop-shadow-lg pr-[2%] ">
-                Wujudkan Keindahan dalam Setiap Rangkaian
-            </p>
-           <div class="w-full flex justify-center">
-            <p class="text-white text-[clamp(1.4rem,5vw,5px)] mb-10 leading-relaxed drop-shadow-md font-light max-w-xl mx-auto">
-                 Jadikan setiap momen lebih berkesan dengan<br>
-                 rangkaian bunga dari toko Lily Florist
-            </p>
-</div>
-            <div class="flex justify-center w-full">
-<a href="https://wa.me/6285715118336">
-    <button class="bg-[#a87b7b] hover:bg-[#8f6363] text-[#3d2b2b] font-semibold text-[clamp(1rem,1.2vw,1.25rem)] py-[clamp(0.8rem,1.5vh,1rem)] px-[clamp(2rem,4vw,3rem)] rounded-full shadow-lg transition-all duration-300 transform hover:scale-105">
-        Belanja Sekarang
-    </button>
-</a>
-
+        <div class="flex-grow flex items-center justify-center md:justify-end px-[5%] w-full">
+            <div class="w-full lg:w-[60%] flex flex-col items-center md:items-end text-center md:text-right mt-10 md:mt-0"> 
+                <div class="hero-heading text-[5rem] md:text-[8rem] lg:text-[9rem] leading-[0.8]">
+                    <h1 class="bg-clip-text text-transparent bg-gradient-to-br from-[#6b3f3f] via-[#9c6f6f] to-[#5a3232] pb-[0.15em] mr-0 md:mr-[4em]">Lily</h1>
+                    <h1 class="bg-clip-text text-transparent bg-gradient-to-br from-[#6b3f3f] via-[#9c6f6f] to-[#5a3232] mr-0 md:mr-[1em]">Florist</h1>
                 </div>
+                <p class="font-great-vibes text-[2.5rem] md:text-[3rem] text-white mb-6 tracking-wider drop-shadow-lg md:pr-[2%]">
+                    Wujudkan Keindahan dalam Setiap Rangkaian
+                </p>
+                <p class="text-white text-sm md:text-base mb-10 leading-relaxed drop-shadow-md font-light max-w-xl mx-auto md:mx-0">
+                    Jadikan setiap momen lebih berkesan dengan<br class="hidden md:block">
+                    rangkaian bunga dari toko Lily Florist
+                </p>
+                <a href="https://wa.me/6285715118336">
+                    <button class="bg-[#a87b7b] hover:bg-[#8f6363] text-[#3d2b2b] font-semibold py-3 px-10 rounded-full shadow-lg transition-all transform hover:scale-105">
+                        Belanja Sekarang
+                    </button>
+                </a>
             </div>
         </div>
 
-        <div class="bg-white py-6 md:py-8 w-full shadow-[-10px_-10px_30px_rgba(0,0,0,0.05)]">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-white py-6 md:py-8 w-full shadow-lg">
+            <div class="max-w-7xl mx-auto px-6">
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                  
-                    <div class="flex items-center justify-center md:justify-start gap-4">
-                        <div class="w-[90px] h-[90px] rounded-full bg-[#a97070] flex items-center justify-center">
-                             <img src="../img/flower (1) 1.png">
+                    <div class="flex items-center justify-start gap-4">
+                        <div class="w-[70px] h-[70px] md:w-[90px] md:h-[90px] rounded-full bg-[#a97070] flex items-center justify-center shrink-0">
+                             <img src="../img/flower (1) 1.png" class="w-1/2">
                         </div>
                         <div class="text-left">
-                            <h3 class="text-base font-bold text-[#5a3232]">Kualitas Tinggi</h3>
-                            <p class="text-xs text-gray-500">Produk bunga segar.</p>
+                            <h3 class="text-sm md:text-base font-bold text-[#5a3232]">Kualitas Tinggi</h3>
+                            <p class="text-[10px] md:text-xs text-gray-500">Produk bunga segar.</p>
                         </div>
                     </div>
-
-                    <div class="flex items-center justify-center md:justify-start gap-4">
-                        <div class="w-[90px] h-[90px] rounded-full bg-[#a97070] flex items-center justify-center">
-                             <img src="../img/brand 1.png">
+                    <div class="flex items-center justify-start gap-4">
+                        <div class="w-[70px] h-[70px] md:w-[90px] md:h-[90px] rounded-full bg-[#a97070] flex items-center justify-center shrink-0">
+                             <img src="../img/brand 1.png" class="w-1/2">
                         </div>
                         <div class="text-left">
-                            <h3 class="text-base font-bold text-[#5a3232]">Toko Bunga Serba Ada</h3>
-                            <p class="text-xs text-gray-500">Berbagaiproduk toko bunga.</p>
+                            <h3 class="text-sm md:text-base font-bold text-[#5a3232]">Toko Bunga Serba Ada</h3>
+                            <p class="text-[10px] md:text-xs text-gray-500">Berbagai produk pilihan.</p>
                         </div>
                     </div>
-
-                    <div class="flex items-center justify-center md:justify-start gap-4">
-                        <div class="w-[90px] h-[90px] rounded-full bg-[#a97070] flex items-center justify-center">
-                             <img src="../img/speech-bubble 1.png">
+                    <div class="flex items-center justify-start gap-4">
+                        <div class="w-[70px] h-[70px] md:w-[90px] md:h-[90px] rounded-full bg-[#a97070] flex items-center justify-center shrink-0">
+                             <img src="../img/speech-bubble 1.png" class="w-1/2">
                         </div>
                         <div class="text-left">
-                            <h3 class="text-base font-bold text-[#5a3232]">Dapat Disesuaikan</h3>
-                            <p class="text-xs text-gray-500">Request spesifik.</p>
+                            <h3 class="text-sm md:text-base font-bold text-[#5a3232]">Dapat Disesuaikan</h3>
+                            <p class="text-[10px] md:text-xs text-gray-500">Request spesifik.</p>
                         </div>
                     </div>
                 </div>
@@ -206,42 +135,26 @@
         </div>
     </div>
 </header>
-   <div id="tentang-kami" class="bg-[#E0B8B8] py-16 md:py-24">
-        <div class="max-w-5xl mx-auto px-6">
-            
-            <div class="flex flex-col md:flex-row items-center justify-center md:gap-20">
-                
-                <div class="w-full md:w-1/2">
-                    <div class="w-[500px] h-auto overflow-hidden">
-                        <img 
-                            src="../img/Rectangle 2.png" 
-                            alt="Florist merangkai bunga" 
-                            class="w-full h-full"
-                        >
-                    </div>
-                </div>
 
-                <div class="md:w-1/2 text-left">
-                    <h2 class="text-5xl md:text-7xl text-[#4a3b3b] mb-4 font-great-vibes font-normal">
-                        Lily Florist
-                    </h2>
-                    
-                    <p class="text-[#4a3b3b]  text-base md:text-lg leading-relaxed text-justify md:text-left">
-                        Lily Florist adalah toko bunga di Depok yang menghadirkan berbagai pilihan bunga segar berkualitas untuk setiap momen spesial Anda. Mulai dari pernikahan, ulang tahun, ucapan selamat, hingga dekorasi acara, semua dirangkai dengan penuh cinta dan ketelitian.
-                    </p>
-                    
-                    <p class="text-[#2d2424] mb-6 text-left md:text-lg font-serif-display font-bold italic tracking-wide">
-                        Lily Florist - Fresh Flowers, Fresh Feelings.
-                    </p>
-                    
-                    <p class="text-[#4a3b3b] text-sm md:text-base font-medium">
-                        Jl. Akses UI, Kelapa Dua, Depok, Jawa Barat
-                    </p>
+<div id="tentang-kami" class="bg-[#E0B8B8] py-16 md:py-24">
+    <div class="max-w-5xl mx-auto px-6">
+        <div class="flex flex-col md:flex-row items-center justify-center gap-10 md:gap-20">
+            <div class="w-full md:w-1/2">
+                <div class="w-full md:w-[500px] h-auto overflow-hidden rounded-2xl shadow-lg">
+                    <img src="../img/Rectangle 2.png" alt="Florist" class="w-full">
                 </div>
-
+            </div>
+            <div class="w-full md:w-1/2 text-center md:text-left">
+                <h2 class="text-5xl md:text-7xl text-[#4a3b3b] mb-4 font-great-vibes">Lily Florist</h2>
+                <p class="text-[#4a3b3b] text-base md:text-lg leading-relaxed text-justify mb-6">
+                    Lily Florist adalah toko bunga di Depok yang menghadirkan berbagai pilihan bunga segar berkualitas untuk setiap momen spesial Anda. Mulai dari pernikahan, ulang tahun, ucapan selamat, hingga dekorasi acara.
+                </p>
+                <p class="text-[#2d2424] mb-6 text-lg font-serif-display font-bold italic">Lily Florist - Fresh Flowers, Fresh Feelings.</p>
+                <p class="text-[#4a3b3b] text-sm md:text-base font-medium">Jl. Akses UI, Kelapa Dua, Depok, Jawa Barat</p>
             </div>
         </div>
     </div>
+</div>
 
     <div class="px-6 py-12 bg-gradient-to-b
     from-[#E0B8B8] from-15%

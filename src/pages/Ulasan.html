@@ -22,6 +22,7 @@
                         'review-bg': '#f2dede',   
                         'footer-bg': '#3e3030',   
                         'star-yellow': '#fbbf24', 
+                        'accent-pink': '#d38b93',
                     },
                     fontFamily: {
                         'serif-display': ["'Playfair Display'", 'serif'],
@@ -34,52 +35,69 @@
 </head>
 <body class="font-poppins bg-white text-gray-800">
 
-    <nav class="max-w-7xl mx-auto px-6 py-6 flex justify-end items-center">
-        <div class="space-x-8 text-sm md:text-base font-semibold text-gray-600">
-            <a href="LandingPage.html#beranda" class="hover:text-accent-pink font-semibold transition-colors duration-200">Beranda</a>
-            <a href="LandingPage.html#tentang-kami" class="hover:text-accent-pink font-semibold transition-colors duration-200">Tentang Kami</a>
-            <a href="LandingPage.html#katalog" class="hover:text-accent-pink font-semibold transition-colors duration-200">Katalog</a>
-            <a href="LandingPage.html#kontak" class="hover:text-accent-pink font-semibold transition-colors duration-200">Kontak</a>
-            </div>
+    <nav class="max-w-7xl mx-auto px-4 md:px-6 py-6 flex justify-between md:justify-end items-center relative">
+        <div class="md:hidden font-serif-display text-xl font-bold text-primary-dark">Lily Florist</div>
+        
+        <button id="menuToggle" class="md:hidden p-2 text-gray-600 focus:outline-none">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path id="menuIcon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+        </button>
+
+        <div id="navMenu" class="hidden absolute top-full left-0 right-0 bg-white shadow-lg md:shadow-none md:static md:flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-8 text-sm md:text-base font-semibold text-gray-600 p-6 md:p-0 z-50">
+            <a href="LandingPage.html#beranda" class="hover:text-accent-pink transition-colors duration-200">Beranda</a>
+            <a href="LandingPage.html#tentang-kami" class="hover:text-accent-pink transition-colors duration-200">Tentang Kami</a>
+            <a href="LandingPage.html#katalog" class="hover:text-accent-pink transition-colors duration-200">Katalog</a>
+            <a href="LandingPage.html#kontak" class="hover:text-accent-pink transition-colors duration-200">Kontak</a>
+        </div>
     </nav>
 
-    <main class="max-w-7xl mx-auto px-6 pb-20">
+    <main class="max-w-7xl mx-auto px-4 md:px-6 pb-40 md:pb-20">
         
-        <h1 class="text-4xl md:text-5xl font-bold font-serif-display text-primary-dark mb-8">
+        <h1 class="text-3xl md:text-5xl font-bold font-serif-display text-primary-dark mb-8 text-center md:text-left">
             Ulasan Toko
         </h1>
 
         <div id="reviewsContainer" class="space-y-4">
-            
+            <div class="text-center py-10 text-gray-400">Memuat ulasan...</div>
         </div>
 
-        <div class="flex flex-col md:flex-row justify-between items-center mt-8">
-            <div id="showingEntries" class="text-sm text-gray-600 mb-4 md:mb-0 font-medium">
+        <div class="flex flex-col md:flex-row justify-between items-center mt-8 gap-4">
+            <div id="showingEntries" class="text-sm text-gray-600 font-medium">
                 Showing 1 to 10 entries
             </div>
 
-            <div id="paginationContainer" class="flex border border-gray-400 rounded-sm overflow-hidden">
-                
-            </div>
+            <div id="paginationContainer" class="flex border border-gray-400 rounded-sm overflow-hidden bg-white">
+                </div>
         </div>
 
     </main>
 
-    <footer class="bg-footer-bg text-gray-300 py-6 px-6 border-t-4 border-red-700 fixed bottom-0 left-0 right-0 z-10">
-    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center">
-        
-        <div class="text-center md:text-left mb-4 md:mb-0">
-            <h2 class="text-2xl font-bold font-serif-display text-white mb-1">Lily Florist</h2>
-            <p class="text-xs md:text-sm text-gray-400">Wujudkan Keindahan dalam Setiap Rangkaian</p>
+    <footer class="bg-footer-bg text-gray-300 py-6 px-6 border-t-4 border-red-700 fixed bottom-0 left-0 right-0 z-40">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center">
+            <div class="text-center md:text-left mb-2 md:mb-0">
+                <h2 class="text-xl md:text-2xl font-bold font-serif-display text-white">Lily Florist</h2>
+                <p class="text-[10px] md:text-sm text-gray-400">Wujudkan Keindahan dalam Setiap Rangkaian</p>
+            </div>
+            <div class="text-center md:text-right text-[10px] md:text-sm text-gray-400">
+                <p>&copy; 2025 Lily Florist, All rights reserved</p>
+            </div>
         </div>
-        <div class="text-center md:text-right text-xs md:text-sm text-gray-400">
-            <p>&copy; 2025 Lily Florist, All rights reserved</p>
-        </div>
-    </div>
     </footer>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // Logic Hamburger Menu
+            const menuToggle = document.getElementById('menuToggle');
+            const navMenu = document.getElementById('navMenu');
+            const menuIcon = document.getElementById('menuIcon');
+
+            menuToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('hidden');
+                // Ganti icon jika menu terbuka (optional)
+                const isOpen = !navMenu.classList.contains('hidden');
+                menuIcon.setAttribute('d', isOpen ? 'M6 18L18 6M6 6l12 12' : 'M4 6h16M4 12h16M4 18h16');
+            });
+
+            // Supabase Config
             const supabaseUrl = 'https://uorxpavndirbgapqzugn.supabase.co/'; 
             const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVvcnhwYXZuZGlyYmdhcHF6dWduIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjQwNDAxOTQsImV4cCI6MjA3OTYxNjE5NH0.ebEFOmTgUFwOefA9FvVAxmm9jcTDVLDi5OLx_3_wh8k'; 
 
@@ -87,7 +105,7 @@
             if (typeof window.supabase !== 'undefined') {
                 supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
             } else {
-                console.error('Supabase script not loaded. Please check your internet connection or CDN URL.');
+                console.error('Supabase script not loaded.');
                 return; 
             }
 
@@ -114,78 +132,64 @@
                 const container = document.getElementById('reviewsContainer');
                 container.innerHTML = '';
 
+                if(data.length === 0) {
+                    container.innerHTML = '<div class="text-center py-10 text-gray-500 font-medium">Belum ada ulasan.</div>';
+                }
+
                 data.forEach(review => {
-                    const stars = '<span>★</span>'.repeat(review.rating);
+                    const stars = '★'.repeat(review.rating) + '☆'.repeat(5 - review.rating);
                     const date = new Date(review.created_at).toLocaleDateString('id-ID', {
                         year: 'numeric', month: 'long', day: 'numeric'
                     });
 
                     const reviewHTML = `
-                        <div class="bg-review-bg p-5 rounded-md shadow-sm">
+                        <div class="bg-review-bg p-4 md:p-5 rounded-md shadow-sm border border-pink-200">
                             <div class="flex justify-between items-start mb-1">
-                                <h3 class="font-bold text-primary-dark text-base">${review.name}</h3>
-                                <span class="text-sm font-semibold text-primary-dark/80">${date}</span>
+                                <h3 class="font-bold text-primary-dark text-sm md:text-base">${review.name}</h3>
+                                <span class="text-[10px] md:text-sm font-semibold text-primary-dark/80">${date}</span>
                             </div>
-                            <div class="flex text-star-yellow text-lg mb-2">${stars}</div>
-                            <p class="text-sm md:text-base text-gray-700 leading-relaxed">${review.comment}</p>
+                            <div class="flex text-star-yellow text-base md:text-lg mb-2 tracking-tighter">${stars}</div>
+                            <p class="text-xs md:text-base text-gray-700 leading-relaxed">${review.comment}</p>
                         </div>
                     `;
                     container.innerHTML += reviewHTML;
                 });
 
-                const start = from + 1;
+                const start = totalReviews === 0 ? 0 : from + 1;
                 const end = Math.min(to + 1, totalReviews);
-                document.getElementById('showingEntries').textContent = `Showing ${start} to ${end} entries`;
+                document.getElementById('showingEntries').textContent = `Showing ${start} to ${end} of ${totalReviews} entries`;
 
                 renderPagination(page);
             }
 
-            function renderPagination(currentPage) {
+            function renderPagination(page) {
                 const totalPages = Math.ceil(totalReviews / reviewsPerPage);
                 const container = document.getElementById('paginationContainer');
                 container.innerHTML = '';
 
+                if(totalPages <= 1) return;
+
+                // Previous
                 const prevButton = document.createElement('button');
-                prevButton.textContent = 'Previous';
-                prevButton.className = 'px-3 py-1 bg-white hover:bg-gray-100 text-sm font-medium text-gray-600 border-r border-gray-400';
-                prevButton.disabled = currentPage === 1;
-                prevButton.addEventListener('click', () => {
-                    if (currentPage > 1) {
-                        currentPage--;
-                        loadReviews(currentPage);
-                    }
-                });
+                prevButton.textContent = 'Prev';
+                prevButton.className = `px-3 py-2 text-xs font-medium border-r border-gray-400 ${page === 1 ? 'bg-gray-100 text-gray-400 cursor-not-allowed' : 'bg-white hover:bg-gray-50 text-gray-600'}`;
+                prevButton.onclick = () => { if(page > 1) loadReviews(page - 1); };
                 container.appendChild(prevButton);
 
-                const maxVisiblePages = 5;
-                let startPage = Math.max(1, currentPage - Math.floor(maxVisiblePages / 2));
-                let endPage = Math.min(totalPages, startPage + maxVisiblePages - 1);
-
-                if (endPage - startPage + 1 < maxVisiblePages) {
-                    startPage = Math.max(1, endPage - maxVisiblePages + 1);
-                }
-
-                for (let i = startPage; i <= endPage; i++) {
+                // Numbered Pages (Tampil terbatas di mobile)
+                for (let i = 1; i <= totalPages; i++) {
                     const pageButton = document.createElement('button');
                     pageButton.textContent = i;
-                    pageButton.className = `px-3 py-1 text-sm font-medium border-r border-gray-400 ${i === currentPage ? 'bg-review-bg text-gray-800 font-bold' : 'bg-white hover:bg-gray-100 text-gray-600'}`;
-                    pageButton.addEventListener('click', () => {
-                        currentPage = i;
-                        loadReviews(currentPage);
-                    });
+                    pageButton.className = `px-4 py-2 text-xs font-medium border-r border-gray-400 ${i === page ? 'bg-primary-dark text-white' : 'bg-white hover:bg-gray-50 text-gray-600'}`;
+                    pageButton.onclick = () => loadReviews(i);
                     container.appendChild(pageButton);
                 }
 
+                // Next
                 const nextButton = document.createElement('button');
                 nextButton.textContent = 'Next';
-                nextButton.className = 'px-3 py-1 bg-white hover:bg-gray-100 text-sm font-medium text-gray-600';
-                nextButton.disabled = currentPage === totalPages;
-                nextButton.addEventListener('click', () => {
-                    if (currentPage < totalPages) {
-                        currentPage++;
-                        loadReviews(currentPage);
-                    }
-                });
+                nextButton.className = `px-3 py-2 text-xs font-medium ${page === totalPages ? 'bg-gray-100 text-gray-400 cursor-not-allowed' : 'bg-white hover:bg-gray-50 text-gray-600'}`;
+                nextButton.onclick = () => { if(page < totalPages) loadReviews(page + 1); };
                 container.appendChild(nextButton);
             }
 
