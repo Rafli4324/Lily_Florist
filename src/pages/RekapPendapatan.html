@@ -27,7 +27,6 @@
         }
     </script>
     <style>
-        
         td, th {
             border-right: 1px solid #ECD3D3;
         }
@@ -37,51 +36,62 @@
         tr:last-child td {
             border-bottom: 1px solid #ECD3D3;
         }
+        /* Custom scrollbar tipis untuk tabel mobile */
+        .overflow-x-auto::-webkit-scrollbar {
+            height: 5px;
+        }
+        .overflow-x-auto::-webkit-scrollbar-thumb {
+            background-color: #DCA8A8;
+            border-radius: 10px;
+        }
     </style>
 </head>
-<body class="bg-gray-50 flex justify-center items-start min-h-screen p-8">
+<body class="bg-gray-50 flex justify-center items-start min-h-screen p-4 md:p-8">
 
-    <div class="w-full max-w-6xl p-8 rounded-xl shadow-sm min-h-[600px]">
+    <div class="w-full max-w-6xl p-4 md:p-8 rounded-xl shadow-sm min-h-[600px] bg-white">
         
-        <div class="flex justify-between items-center mb-8">
-            <div class="flex items-center gap-4">
-                
-                <h1 class="text-3xl font-bold text-text-primary tracking-tight">Rekap Pendapatan Bulanan</h1>
+        <div class="flex flex-col lg:flex-row justify-between items-center mb-8 gap-6">
+            <div class="flex items-center gap-4 text-center lg:text-left">
+                <h1 class="text-2xl md:text-3xl font-bold text-text-primary tracking-tight">Rekap Pendapatan Bulanan</h1>
             </div>
             
-            <div class="flex items-center gap-4">
-                <select id="monthSelect" class="border border-gray-300 rounded px-3 py-2 text-sm">
-                    <option value="01">Januari</option>
-                    <option value="02">Februari</option>
-                    <option value="03">Maret</option>
-                    <option value="04">April</option>
-                    <option value="05">Mei</option>
-                    <option value="06">Juni</option>
-                    <option value="07">Juli</option>
-                    <option value="08">Agustus</option>
-                    <option value="09">September</option>
-                    <option value="10">Oktober</option>
-                    <option value="11">November</option>
-                    <option value="12">Desember</option>
-                </select>
-                <select id="yearSelect" class="border border-gray-300 rounded px-3 py-2 text-sm">
-                    <option value="2024">2024</option>
-                    <option value="2025">2025</option>
-                    <option value="2026">2026</option>
-                    <option value="2027">2027</option>
-                    <option value="2028">2028</option>
-                </select>
-                <button id="loadDataBtn" class="bg-dusty-header hover:bg-btn-hover text-text-primary font-semibold py-2 px-6 rounded shadow-sm text-sm transition-colors">
-                    Muat Data
-                </button>
-                <button id="downloadBtn" class="bg-dusty-header hover:bg-btn-hover text-text-primary font-semibold py-2 px-6 rounded shadow-sm text-sm transition-colors">
-                    Unduh Data
-                </button>
+            <div class="flex flex-col sm:flex-row items-center gap-3 w-full lg:w-auto">
+                <div class="flex gap-2 w-full sm:w-auto">
+                    <select id="monthSelect" class="flex-1 border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-dusty-header">
+                        <option value="01">Januari</option>
+                        <option value="02">Februari</option>
+                        <option value="03">Maret</option>
+                        <option value="04">April</option>
+                        <option value="05">Mei</option>
+                        <option value="06">Juni</option>
+                        <option value="07">Juli</option>
+                        <option value="08">Agustus</option>
+                        <option value="09">September</option>
+                        <option value="10">Oktober</option>
+                        <option value="11">November</option>
+                        <option value="12">Desember</option>
+                    </select>
+                    <select id="yearSelect" class="flex-1 border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-dusty-header">
+                        <option value="2024">2024</option>
+                        <option value="2025">2025</option>
+                        <option value="2026">2026</option>
+                        <option value="2027">2027</option>
+                        <option value="2028">2028</option>
+                    </select>
+                </div>
+                <div class="flex gap-2 w-full sm:w-auto">
+                    <button id="loadDataBtn" class="flex-1 bg-dusty-header hover:bg-btn-hover text-text-primary font-semibold py-2 px-5 rounded shadow-sm text-sm transition-colors">
+                        Muat
+                    </button>
+                    <button id="downloadBtn" class="flex-1 bg-dusty-header hover:bg-btn-hover text-text-primary font-semibold py-2 px-5 rounded shadow-sm text-sm transition-colors whitespace-nowrap">
+                        Unduh Excel
+                    </button>
+                </div>
             </div>
         </div>
 
-        <div class="border border-dusty-border rounded-t-lg overflow-hidden mb-6">
-            <table class="w-full border-collapse">
+        <div class="overflow-x-auto border border-dusty-border rounded-t-lg mb-6 shadow-sm">
+            <table class="w-full border-collapse min-w-[800px]">
                 <thead>
                     <tr class="bg-dusty-header text-text-primary text-base">
                         <th class="py-4 px-2 font-semibold text-center w-16 border-b border-dusty-border">No</th>
@@ -92,18 +102,16 @@
                     </tr>
                 </thead>
                 <tbody id="rekapBody" class="text-text-primary text-sm bg-dusty-row">
-                    
-                </tbody>
+                    </tbody>
             </table>
         </div>
 
-        <div class="flex justify-between items-center text-sm text-gray-600">
-            <div id="showingText">
+        <div class="flex flex-col md:flex-row justify-between items-center text-sm text-gray-600 gap-4">
+            <div id="showingText" class="font-medium order-2 md:order-1">
                 Showing 0 to 0 entries
             </div>
-            <div id="paginationControls" class="flex items-center gap-1">
-                
-            </div>
+            <div id="paginationControls" class="flex flex-wrap justify-center items-center gap-1 order-1 md:order-2">
+                </div>
         </div>
 
     </div>
@@ -130,10 +138,7 @@
         const downloadBtn = document.getElementById('downloadBtn');
 
         function initializeSupabase() {
-            if (typeof supabase === 'undefined') {
-                console.error('Supabase library not loaded.');
-                return false;
-            }
+            if (typeof supabase === 'undefined') return false;
             supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
             return true;
         }
@@ -154,7 +159,6 @@
 
         async function loadRekap(month, year) {
             if (!supabaseClient) return;
-
             const startDate = `${year}-${month}-01`;
             const endDate = new Date(year, month, 0).toISOString().split('T')[0];
 
@@ -166,8 +170,6 @@
                     .lte('tanggal', endDate)
                     .order('tanggal', { ascending: true });
 
-                if (incomeError) throw incomeError;
-
                 const { data: expenseData, error: expenseError } = await supabaseClient
                     .from('tabel_pengeluaran')
                     .select('tanggal, jumlah, keterangan')
@@ -175,132 +177,80 @@
                     .lte('tanggal', endDate)
                     .order('tanggal', { ascending: true });
 
-                if (expenseError) throw expenseError;
+                if (incomeError || expenseError) throw incomeError || expenseError;
 
                 allData = [];
-
                 incomeData.forEach(item => {
-                    allData.push({
-                        No: allData.length + 1,
-                        Tanggal: item.tanggal.split('-').reverse().join('/'),
-                        Pemasukan: formatRupiah(item.jumlah.toString()),
-                        Pengeluaran: '',
-                        Keterangan: item.keterangan
-                    });
+                    allData.push({ TanggalRaw: item.tanggal, Tanggal: item.tanggal.split('-').reverse().join('/'), Pemasukan: formatRupiah(item.jumlah.toString()), Pengeluaran: '', Keterangan: item.keterangan });
                 });
-
                 expenseData.forEach(item => {
-                    allData.push({
-                        No: allData.length + 1,
-                        Tanggal: item.tanggal.split('-').reverse().join('/'),
-                        Pemasukan: '',
-                        Pengeluaran: formatRupiah(item.jumlah.toString()),
-                        Keterangan: item.keterangan
-                    });
+                    allData.push({ TanggalRaw: item.tanggal, Tanggal: item.tanggal.split('-').reverse().join('/'), Pemasukan: '', Pengeluaran: formatRupiah(item.jumlah.toString()), Keterangan: item.keterangan });
                 });
 
-                allData.sort((a, b) => {
-                    const dateA = a.Tanggal.split('/').reverse().join('-');
-                    const dateB = b.Tanggal.split('/').reverse().join('-');
-                    return new Date(dateA) - new Date(dateB);
-                });
-
-                allData.forEach((item, index) => {
-                    item.No = index + 1;
-                });
+                allData.sort((a, b) => new Date(a.TanggalRaw) - new Date(b.TanggalRaw));
+                allData.forEach((item, index) => { item.No = index + 1; delete item.TanggalRaw; });
 
                 totalItems = allData.length;
-
-                const offset = (currentPage - 1) * itemsPerPage;
-                const paginatedData = allData.slice(offset, offset + itemsPerPage);
-
-                rekapBody.innerHTML = '';
-
-                if (paginatedData.length === 0) {
-                    rekapBody.innerHTML = '<tr><td colspan="5" class="text-center py-4">Tidak ada data untuk bulan ini.</td></tr>';
-                } else {
-                    paginatedData.forEach((item) => {
-                        const row = document.createElement('tr');
-                        row.innerHTML = `
-                            <td class="py-3 px-2 border-b border-dusty-border text-center font-bold text-[#443131]">${item.No}</td>
-                            <td class="py-3 px-4 border-b border-dusty-border text-center">${item.Tanggal}</td>
-                            <td class="py-3 px-4 border-b border-dusty-border text-left pl-8">${item.Pemasukan}</td>
-                            <td class="py-3 px-4 border-b border-dusty-border text-center">${item.Pengeluaran}</td>
-                            <td class="py-3 px-6 border-b border-dusty-border text-center">${item.Keterangan}</td>
-                        `;
-                        rekapBody.appendChild(row);
-                    });
-                }
-
-                const start = offset + 1;
-                const end = Math.min(offset + paginatedData.length, totalItems);
-                showingText.textContent = `Showing ${start} to ${end} of ${totalItems} entries`;
-
-                renderPagination();
-
+                renderTable();
             } catch (err) {
-                console.error('Error loading rekap:', err);
+                console.error(err);
                 alert('Gagal memuat data rekap.');
             }
+        }
+
+        function renderTable() {
+            const offset = (currentPage - 1) * itemsPerPage;
+            const paginatedData = allData.slice(offset, offset + itemsPerPage);
+
+            rekapBody.innerHTML = '';
+            if (paginatedData.length === 0) {
+                rekapBody.innerHTML = '<tr><td colspan="5" class="text-center py-10 text-gray-400">Tidak ada data untuk bulan ini.</td></tr>';
+            } else {
+                paginatedData.forEach((item) => {
+                    const row = document.createElement('tr');
+                    row.className = "hover:bg-pink-50 transition-colors";
+                    row.innerHTML = `
+                        <td class="py-3 px-2 text-center font-bold text-[#443131]">${item.No}</td>
+                        <td class="py-3 px-4 text-center">${item.Tanggal}</td>
+                        <td class="py-3 px-4 text-left pl-8 text-green-600 font-medium">${item.Pemasukan}</td>
+                        <td class="py-3 px-4 text-center text-red-500">${item.Pengeluaran}</td>
+                        <td class="py-3 px-6 text-center italic text-gray-600">${item.Keterangan}</td>
+                    `;
+                    rekapBody.appendChild(row);
+                });
+            }
+
+            const start = totalItems === 0 ? 0 : offset + 1;
+            const end = Math.min(offset + itemsPerPage, totalItems);
+            showingText.textContent = `Showing ${start} to ${end} of ${totalItems} entries`;
+            renderPagination();
         }
 
         function renderPagination() {
             const totalPages = Math.ceil(totalItems / itemsPerPage);
             paginationControls.innerHTML = '';
-
             if (totalPages <= 1) return;
 
-            const prevBtn = document.createElement('button');
-            prevBtn.textContent = 'Previous';
-            prevBtn.className = 'px-3 py-1 border rounded text-xs bg-gray-50 text-gray-600';
-            if (currentPage === 1) prevBtn.disabled = true;
-            prevBtn.addEventListener('click', () => {
-                if (currentPage > 1) {
-                    currentPage--;
-                    loadRekap(currentMonth, currentYear);
-                }
-            });
-            paginationControls.appendChild(prevBtn);
+            const createBtn = (text, targetPage, disabled = false, active = false) => {
+                const btn = document.createElement('button');
+                btn.textContent = text;
+                btn.disabled = disabled;
+                btn.className = `px-3 py-1 border rounded text-xs transition-all ${disabled ? 'opacity-40 cursor-not-allowed' : 'hover:bg-dusty-border'} ${active ? 'bg-pagination-active text-white font-bold' : 'bg-white text-gray-600'}`;
+                btn.addEventListener('click', () => { currentPage = targetPage; renderTable(); });
+                paginationControls.appendChild(btn);
+            };
 
-            for (let i = 1; i <= totalPages; i++) {
-                const pageBtn = document.createElement('button');
-                pageBtn.textContent = i;
-                pageBtn.className = 'px-3 py-1 border rounded text-xs';
-                if (i === currentPage) {
-                    pageBtn.className += ' bg-pagination-active font-medium text-white';
-                } else {
-                    pageBtn.className += ' bg-white text-gray-600';
-                }
-                pageBtn.addEventListener('click', () => {
-                    currentPage = i;
-                    loadRekap(currentMonth, currentYear);
-                });
-                paginationControls.appendChild(pageBtn);
-            }
-
-            const nextBtn = document.createElement('button');
-            nextBtn.textContent = 'Next';
-            nextBtn.className = 'px-3 py-1 border rounded text-xs bg-gray-50 text-gray-600';
-            if (currentPage === totalPages) nextBtn.disabled = true;
-            nextBtn.addEventListener('click', () => {
-                if (currentPage < totalPages) {
-                    currentPage++;
-                    loadRekap(currentMonth, currentYear);
-                }
-            });
-            paginationControls.appendChild(nextBtn);
+            createBtn('Previous', currentPage - 1, currentPage === 1);
+            for (let i = 1; i <= totalPages; i++) createBtn(i, i, false, i === currentPage);
+            createBtn('Next', currentPage + 1, currentPage === totalPages);
         }
 
         function downloadExcel() {
-            if (allData.length === 0) {
-                alert('Tidak ada data untuk diunduh.');
-                return;
-            }
-
+            if (allData.length === 0) return alert('Tidak ada data untuk diunduh.');
             const ws = XLSX.utils.json_to_sheet(allData);
             const wb = XLSX.utils.book_new();
-            XLSX.utils.book_append_sheet(wb, ws, 'Rekap Pendapatan');
-            XLSX.writeFile(wb, `Rekap_Pendapatan_${currentMonth}_${currentYear}.xlsx`);
+            XLSX.utils.book_append_sheet(wb, ws, 'Rekap');
+            XLSX.writeFile(wb, `Rekap_Lily_Florist_${currentMonth}_${currentYear}.xlsx`);
         }
 
         loadDataBtn.addEventListener('click', () => {
@@ -319,11 +269,8 @@
         currentYear = yearSelect.value;
 
         document.addEventListener('DOMContentLoaded', () => {
-            if (initializeSupabase()) {
-                loadRekap(currentMonth, currentYear);
-            }
+            if (initializeSupabase()) loadRekap(currentMonth, currentYear);
         });
     </script>
-
 </body>
 </html>
